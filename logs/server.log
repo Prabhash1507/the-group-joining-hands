@@ -76,3 +76,19 @@
 {"timestamp": "2026-09-15T22:32:43.038445", "level": "WARN", "message": "Failed login attempt for email: tejas"}
 {"timestamp": "2026-09-15T22:32:43.191107", "level": "WARN", "message": "Failed login attempt for email: tejas"}
 {"timestamp": "2026-09-15T22:33:00.751511", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-18T15:00:01.736339", "level": "ERROR", "message": "Unhandled GET exception: [WinError 10053] An established connection was aborted by the software in your host machine", "method": "GET", "path": "/themes/theme5.mp4", "status": 500}
+{"timestamp": "2026-09-18T15:00:01.778333", "level": "ERROR", "message": "Unhandled GET exception: [WinError 10053] An established connection was aborted by the software in your host machine", "method": "GET", "path": "/themes/theme4.mp4", "status": 500}
+{"timestamp": "2026-09-18T15:16:15.519115", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:16:17.815987", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:16:22.144949", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:16:26.518566", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:16:34.330712", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:16:34.657909", "level": "INFO", "message": "Password successfully reset via token for user ID 439"}
+{"timestamp": "2026-09-18T15:16:34.918101", "level": "INFO", "message": "User authenticated successfully via JWT: feat_b_1789724793567@joininghands.org (ID: 439)"}
+{"timestamp": "2026-09-18T15:18:25.865079", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:18:26.155235", "level": "INFO", "message": "Password successfully reset via token for user ID 441"}
+{"timestamp": "2026-09-18T15:18:26.422440", "level": "INFO", "message": "User authenticated successfully via JWT: feat_b_1789724905065@joininghands.org (ID: 441)"}
+{"timestamp": "2026-09-18T15:18:29.765725", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:18:32.061221", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:18:36.406600", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-18T15:18:40.751178", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
