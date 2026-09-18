@@ -2061,6 +2061,255 @@ body {
     color: #0f172a;
 }
 
+/* Header mini tile — same tile UI as landing, compact 64px for page headers */
+.header-tile {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px;
+    min-height: 64px;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: none;
+    cursor: default;
+    flex: 0 0 auto;
+}
+
+.header-tile:hover {
+    transform: none !important;
+}
+
+.header-tile:hover .tile-3d-body {
+    transform: none !important;
+}
+
+.header-tile .tile-3d-body {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+.header-tile .tile-3d-raised {
+    width: 48px;
+    height: 48px;
+}
+
+.header-tile .tile-3d-circle {
+    width: 40px;
+    height: 40px;
+}
+
+.header-tile .tile-symbol-svg {
+    width: 30px;
+    height: 30px;
+}
+
+.header-tile .tile-symbol-img {
+    height: 36px;
+    max-width: 32px;
+    max-height: 36px;
+}
+
+.header-tile .tile-letter {
+    font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+    /* Keep mobile headers compact so they never crowd the center content */
+    .header-tile {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+    .header-tile .tile-3d-body {
+        border-radius: 14px;
+    }
+
+    .header-tile .tile-3d-raised {
+        width: 36px;
+        height: 36px;
+    }
+
+    .header-tile .tile-3d-circle {
+        width: 30px;
+        height: 30px;
+    }
+
+    .header-tile .tile-symbol-svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .header-tile .tile-symbol-img {
+        height: 26px;
+        max-width: 24px;
+        max-height: 26px;
+    }
+
+    .header-tile .tile-letter {
+        font-size: 1.05rem;
+    }
+
+    .universal-app-header .fa-handshake-angle {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 24px !important;
+    }
+
+    .universal-app-header img[alt="Home"] {
+        width: 48px !important;
+        height: 48px !important;
+    }
+}
+
+/* NIM portal centerpiece — deep 3D orange emblem with extruded 3D text */
+.nim-3d-stage {
+    perspective: 1000px;
+}
+
+.nim-3d-body {
+    width: 220px;
+    height: 220px;
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 46%),
+        linear-gradient(145deg, #fdba74 0%, #fb923c 30%, #f97316 60%, #c2410c 100%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 30px 60px rgba(194, 65, 12, 0.45),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        inset 0 3px 6px rgba(255, 255, 255, 0.65),
+        inset 0 -7px 12px rgba(124, 45, 18, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    animation: gentleFloat 6s ease-in-out infinite alternate;
+}
+
+.nim-3d-raised {
+    width: 172px;
+    height: 172px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(145deg, #fb923c 0%, #f97316 55%, #ea580c 100%);
+    box-shadow: 0 10px 24px rgba(124, 45, 18, 0.5),
+        inset 0 3px 5px rgba(255, 255, 255, 0.6),
+        inset 0 -5px 8px rgba(124, 45, 18, 0.45);
+    transform: translateZ(14px);
+}
+
+.nim-3d-circle {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(145deg, #f97316 0%, #ea580c 60%, #c2410c 100%);
+    box-shadow: inset 0 5px 10px rgba(124, 45, 18, 0.55),
+        inset 0 -4px 8px rgba(255, 255, 255, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.nim-3d-text {
+    font-family: Calibri, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.45;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 0 #ffedd5,
+        0 2px 0 #fed7aa,
+        0 3px 0 #fdba74,
+        0 4px 0 #c2410c,
+        0 5px 0 #7c2d12,
+        0 6px 2px rgba(0, 0, 0, 0.4),
+        0 10px 18px rgba(0, 0, 0, 0.35);
+    transform: translateZ(8px);
+}
+
+/* API portal centerpiece — deep 3D violet emblem with extruded 3D text */
+.api-3d-stage {
+    perspective: 1000px;
+}
+
+.api-3d-body {
+    width: 220px;
+    height: 220px;
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 46%),
+        linear-gradient(145deg, #c4b5fd 0%, #8b5cf6 30%, #6d28d9 60%, #4c1d95 100%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 30px 60px rgba(76, 29, 149, 0.45),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        inset 0 3px 6px rgba(255, 255, 255, 0.65),
+        inset 0 -7px 12px rgba(46, 16, 101, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    animation: gentleFloat 6s ease-in-out infinite alternate;
+}
+
+.api-3d-raised {
+    width: 172px;
+    height: 172px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(145deg, #a78bfa 0%, #7c3aed 55%, #6d28d9 100%);
+    box-shadow: 0 10px 24px rgba(46, 16, 101, 0.5),
+        inset 0 3px 5px rgba(255, 255, 255, 0.6),
+        inset 0 -5px 8px rgba(46, 16, 101, 0.5);
+    transform: translateZ(14px);
+}
+
+.api-3d-circle {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(145deg, #7c3aed 0%, #6d28d9 60%, #581c87 100%);
+    box-shadow: inset 0 5px 10px rgba(46, 16, 101, 0.55),
+        inset 0 -4px 8px rgba(255, 255, 255, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.api-3d-text {
+    font-family: Calibri, sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 0 #ede9fe,
+        0 2px 0 #c4b5fd,
+        0 3px 0 #a78bfa,
+        0 4px 0 #5b21b6,
+        0 5px 0 #2e1065,
+        0 6px 2px rgba(0, 0, 0, 0.4),
+        0 10px 18px rgba(0, 0, 0, 0.35);
+    transform: translateZ(8px);
+}
+
 /* ==========================================================================
    HOVER & CLICK 3D PHYSICAL INTERACTIONS
    ========================================================================== */
@@ -8597,31 +8846,96 @@ input:checked+.slider:before {
     box-shadow: 0 4px 10px rgba(124, 58, 237, 0.1);
 }
 
-/* MENU vertical dropdown below the MENU button — large sharp rectangle */
-.menu-dropdown-panel {
-    position: fixed;
-    left: 24px;
-    top: 200px;
-    width: 260px;
-    background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.14);
-    border-radius: 0;
-    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.18);
-    padding: 0;
-    z-index: 1001;
+/* MENU = same look as other tile buttons when collapsed, ONE box enlarges when open */
+#menuFloatingBtn {
+    width: 100px;
+    height: 100px;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    align-items: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    overflow: visible;
+    box-sizing: border-box;
+    transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        min-height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.3s ease,
+        padding 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#menuFloatingBtn.menu-open {
+    width: 232px;
+    height: auto;
+    min-height: 124px;
+    background: var(--glass-bg);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
+        inset 0 2px 4px rgba(255, 255, 255, 0.45),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    padding: 12px;
+    overflow: hidden;
+}
+
+#menuFloatingBtn .tile-3d-body {
+    width: 100px;
+    height: 100px;
+    flex: 0 0 auto;
+}
+
+#menuFloatingBtn.menu-open .tile-3d-body {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.menu-dropdown-panel {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin-top: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-8px);
-    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+    overflow: hidden;
+    transform: translateY(-14px);
+    transform-origin: top center;
+    transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.28s ease,
+        transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-top 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.38s ease;
 }
 
 .menu-dropdown-panel.active {
+    max-height: 420px;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    margin-top: 10px;
 }
 
 .menu-dropdown-item {
@@ -8629,23 +8943,34 @@ input:checked+.slider:before {
     align-items: center;
     gap: 12px;
     width: 100%;
-    padding: 15px 16px;
-    background: #ffffff;
-    border: none;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.12);
-    border-radius: 0;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(124, 58, 237, 0.14);
+    border-radius: 14px;
     font-family: Calibri, sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: #1e293b;
     cursor: pointer;
     text-align: left;
-    transition: background 0.2s ease;
     box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease;
 }
 
+.menu-dropdown-panel.active .menu-dropdown-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(1) { transition-delay: 0.05s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(2) { transition-delay: 0.1s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(3) { transition-delay: 0.15s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(4) { transition-delay: 0.2s; }
+
 .menu-dropdown-item:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.14);
 }
 
 .menu-dropdown-item i {
@@ -8656,27 +8981,48 @@ input:checked+.slider:before {
 }
 
 .menu-dropdown-item:hover {
-    background: #f1f5f9;
+    background: #faf5ff;
+    border-color: rgba(124, 58, 237, 0.35);
+    transform: translateX(3px);
+}
+
+.menu-dropdown-panel.active .menu-dropdown-item:hover {
+    transform: translateX(3px);
 }
 
 @media (max-width: 768px) {
-    .menu-dropdown-panel {
-        left: 16px;
-        top: 170px;
-        width: 240px;
+    #menuFloatingBtn {
+        width: 55px;
+        height: 55px;
+        min-height: 0;
+        padding: 0;
+    }
+    #menuFloatingBtn.menu-open {
+        width: 210px;
+        height: auto;
+        min-height: 79px;
+        padding: 10px;
+        border-radius: 18px;
+    }
+    #menuFloatingBtn .tile-3d-body {
+        width: 55px !important;
+        height: 55px !important;
+    }
+    .menu-dropdown-panel.active {
+        margin-top: 8px;
     }
 }
 
 @media (max-width: 768px) {
 
-    .vertical-menu-trigger.ecosystem-tile--menu,
+    .vertical-menu-trigger.ecosystem-tile--menu:not(#menuFloatingBtn),
     .vertical-ai-trigger.ecosystem-tile--ai {
         top: 80px;
         width: 80px;
         height: 80px;
     }
 
-    .vertical-menu-trigger.ecosystem-tile--menu {
+    .vertical-menu-trigger.ecosystem-tile--menu:not(#menuFloatingBtn) {
         left: 16px;
     }
 
@@ -8941,10 +9287,33 @@ input:checked+.slider:before {
 
     /* 1. Prevent Floating Buttons from Squishing the Center Content */
     /* Keep MENU and AI exactly at the top where they are on PC, just perfectly scaled down */
-    .vertical-menu-trigger.ecosystem-tile--menu {
+    /* NOTE: #menuFloatingBtn is excluded — it is an expandable container (button + slide-down menus) */
+    .vertical-menu-trigger.ecosystem-tile--menu:not(#menuFloatingBtn) {
         top: 80px !important;
         bottom: auto !important;
         left: 8px !important;
+        width: 55px !important;
+        height: 55px !important;
+    }
+
+    #menuFloatingBtn {
+        top: 80px !important;
+        bottom: auto !important;
+        left: 8px !important;
+        width: 55px !important;
+        height: 55px !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+    }
+
+    #menuFloatingBtn.menu-open {
+        width: 210px !important;
+        height: auto !important;
+        min-height: 79px !important;
+        padding: 10px !important;
+    }
+
+    #menuFloatingBtn .tile-3d-body {
         width: 55px !important;
         height: 55px !important;
     }

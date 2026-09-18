@@ -314,7 +314,8 @@
                 <span class="corner-brand-text">The Group of Joining Hands Private Limited</span>
             </div>
 
-            <!-- Single 3D Menu Box Trigger + Vertical Dropdown -->
+
+            <!-- Single 3D Menu Box Trigger with Expandable Dropdown -->
             <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="menuFloatingBtn" onclick="toggleMenuDropdown(event)"
                 role="button" tabindex="0"
                 onkeydown="if(event.key==='Enter'||event.key===' ') { toggleMenuDropdown(event); }"
@@ -326,23 +327,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="menu-dropdown-panel" id="menuDropdownPanel" role="menu" aria-label="Site Menu" onclick="event.stopPropagation()">
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuAbout()">
+                        <i class="fa-solid fa-circle-info"></i><span>About</span>
+                    </button>
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('products')">
+                        <i class="fa-solid fa-box-open"></i><span>Products</span>
+                    </button>
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('consulting')">
+                        <i class="fa-solid fa-handshake-angle"></i><span>Consulting & Services</span>
+                    </button>
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('career')">
+                        <i class="fa-solid fa-briefcase"></i><span>Career Opportunity</span>
+                    </button>
+                </div>
             </div>
-
-            <div class="menu-dropdown-panel" id="menuDropdownPanel" role="menu" aria-label="Site Menu">
-                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuAbout()">
-                    <i class="fa-solid fa-circle-info"></i><span>About</span>
-                </button>
-                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuSection('products')">
-                    <i class="fa-solid fa-box-open"></i><span>Products</span>
-                </button>
-                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuSection('consulting')">
-                    <i class="fa-solid fa-handshake-angle"></i><span>Consulting &amp; Services</span>
-                </button>
-                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuSection('career')">
-                    <i class="fa-solid fa-briefcase"></i><span>Career Opportunity</span>
-                </button>
-            </div>
-
             <!-- Single 3D Natural Intelligent Machine Box Trigger -->
             <div class="vertical-ai-trigger ecosystem-tile ecosystem-tile--ai" role="button" tabindex="0"
                 onclick="openAiPortal()" onkeydown="if(event.key==='Enter'||event.key===' ')openAiPortal()"
@@ -868,23 +867,18 @@
         <!-- LOGIN STAGE -->
         <div id="pro-login-stage" class="pro-stage active" style="min-height: 100vh; position: relative;">
             <div class="universal-app-header"
-                style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; box-sizing: border-box; margin-bottom: 20px;">
-                <!-- LEFT: Joining Hands Logo ONLY -->
-                <div style="pointer-events: auto; display: flex; align-items: center;">
+                style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; box-sizing: border-box; margin-bottom: 20px;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--p header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><span class="tile-letter">P</span></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                     <i class="fa-solid fa-handshake-angle"
-                        style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);"></i>
-                </div>
-                <!-- RIGHT: Home -->
-                <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+                </div><div style="pointer-events: auto; display: flex; align-items: center;">
                     <button onclick="returnToLanding()"
                         style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                         onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                         aria-label="Go back to main screen">
                         <img src="/static/images/new_home_icon.png" alt="Home"
-                            style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                            style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
                     </button>
-                </div>
-            </div>
+                </div></div></div>
 
             <div class="pro-login-container" style="margin: 0; padding: 0;">
                 <div class="pro-login-card admin-login-corner-card"
@@ -1414,23 +1408,18 @@
     <div id="insta-view" class="app-view"
         style="display: none; justify-content: center; align-items: center; min-height: 100vh;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <!-- LEFT: Joining Hands Logo ONLY -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--e header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><span class="tile-letter">E</span></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);"></i>
-            </div>
-            <!-- RIGHT: Home -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
         <div class="pro-login-card admin-login-corner-card"
             style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
             <h2>
@@ -1456,23 +1445,18 @@
     <!-- SHANKAR NAG VIEW (WHITE ICON) -->
     <div id="shankar-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <!-- LEFT: Joining Hands Logo ONLY -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--o header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><img src="/static/images/shankar.png" alt="Shankar Nag" class="tile-symbol-img"></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
-            </div>
-            <!-- RIGHT: Home -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
 
         <div class="pro-login-card admin-login-corner-card"
             style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
@@ -1502,30 +1486,25 @@
     <div id="rapido-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <!-- Top Universal Header -->
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <!-- LEFT: Joining Hands Logo ONLY -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--d header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><svg class="tile-symbol-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 50 14 L 50 86" /><path d="M 14 50 L 86 50" /><path d="M 50 14 L 84 14" /><path d="M 86 50 L 86 84" /><path d="M 50 86 L 16 86" /><path d="M 14 50 L 14 16" /></g><circle cx="32" cy="32" r="3.5" fill="#ffffff" /><circle cx="68" cy="32" r="3.5" fill="#ffffff" /><circle cx="32" cy="68" r="3.5" fill="#ffffff" /><circle cx="68" cy="68" r="3.5" fill="#ffffff" /></svg></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
-            </div>
-            <!-- RIGHT: Home -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
 
         <!-- Center: Purple Swastika Icon on Pure White Background -->
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
             <div class="purple-swastik-portal-icon-wrap" style="display: flex; align-items: center; justify-content: center;">
                 <svg class="portal-swastik-svg" viewBox="0 0 100 100" fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style="width: clamp(280px, 36vw, 480px); height: clamp(280px, 36vw, 480px); filter: drop-shadow(0 18px 45px rgba(124, 58, 237, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
+                    style="width: clamp(280px, 36vw, 480px); height: clamp(280px, 36vw, 480px); filter: drop-shadow(0 2px 0 #5b21b6) drop-shadow(0 4px 0 #4c1d95) drop-shadow(0 8px 18px rgba(76, 29, 149, 0.4)) drop-shadow(0 18px 45px rgba(124, 58, 237, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
                     <!-- Upright, symmetrical traditional Indian Swastik -->
                     <g stroke="#7c3aed" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
                         <!-- Center cross -->
@@ -1574,10 +1553,10 @@
     <!-- API PORTAL LOGIN SCREEN (gated, same auth API as other portals) -->
     <div id="api-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: flex-end; gap: 12px; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #7c3aed; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+                        style="color: #7c3aed; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
             </div>
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
@@ -1585,18 +1564,21 @@
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
                 </button>
             </div>
         </div>
 
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <div class="tile-3d-body" style="width: 200px; height: 200px; border-radius: 40px; background: linear-gradient(145deg, #8b5cf6 0%, #6d28d9 45%, #581c87 100%); display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 18px 45px rgba(124, 58, 237, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
-                    <span style="font-family: Calibri, sans-serif; font-size: 3rem; font-weight: 900; color: #ffffff;">API</span>
+            <div class="api-3d-stage" style="display: flex; align-items: center; justify-content: center;">
+                <div class="api-3d-body">
+                    <div class="api-3d-raised">
+                        <div class="api-3d-circle">
+                            <span class="api-3d-text">API</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p style="margin-top: 24px; color: #475569; font-weight: 600;">System REST APIs — Admin access required</p>
         </div>
 
         <div class="pro-login-card admin-login-corner-card"
@@ -1626,10 +1608,10 @@
     <!-- NATURAL INTELLIGENT MACHINE PORTAL LOGIN SCREEN (gated, same auth API) -->
     <div id="ai-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: flex-end; gap: 12px; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #ea580c; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+                        style="color: #ea580c; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
             </div>
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
@@ -1637,18 +1619,21 @@
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
                 </button>
             </div>
         </div>
 
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <div class="tile-3d-body" style="width: 200px; height: 200px; border-radius: 40px; background: linear-gradient(145deg, #fb923c 0%, #f97316 45%, #ea580c 100%); display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 18px 45px rgba(234, 88, 12, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
-                    <span style="font-family: Calibri, sans-serif; font-size: 1.2rem; font-weight: 900; color: #ffffff; text-align: center; line-height: 1.4;">NATURAL<br>INTELLIGENT<br>MACHINE</span>
+            <div class="nim-3d-stage" style="display: flex; align-items: center; justify-content: center;">
+                <div class="nim-3d-body">
+                    <div class="nim-3d-raised">
+                        <div class="nim-3d-circle">
+                            <span class="nim-3d-text">NATURAL<br>INTELLIGENT<br>MACHINE</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p style="margin-top: 24px; color: #475569; font-weight: 600;">Natural Intelligent Machine — Admin access required</p>
         </div>
 
         <div class="pro-login-card admin-login-corner-card"
@@ -1678,26 +1663,20 @@
     <!-- H (STSCOPE) PORTAL LOGIN SCREEN (gated, same auth API as other portals) -->
     <div id="h-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--h header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><img src="/static/images/stscope.png" alt="Stscope" class="tile-symbol-img"></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
-            </div>
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
 
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
-            <img src="/static/images/stscope.png" alt="Stscope"
-                style="width: clamp(220px, 30vw, 340px); height: auto; filter: drop-shadow(0 18px 45px rgba(234, 88, 12, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
-            <p style="margin-top: 24px; color: #475569; font-weight: 600;">Stscope Portal — Admin access required</p>
         </div>
 
         <div class="pro-login-card admin-login-corner-card"
@@ -1727,91 +1706,81 @@
     <!-- H (STSCOPE) PORTAL MAIN VIEW -->
     <div id="h-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--h header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><img src="/static/images/stscope.png" alt="Stscope" class="tile-symbol-img"></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
-            </div>
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
 
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
-            <img src="/static/images/stscope.png" alt="Stscope"
-                style="width: clamp(160px, 22vw, 240px); height: auto; filter: drop-shadow(0 14px 34px rgba(234, 88, 12, 0.3)); animation: gentleFloat 6s ease-in-out infinite alternate;">
-            <h2 style="margin: 24px 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Stscope Portal</h2>
-            <p style="margin: 0; color: #475569; max-width: 520px;">Welcome Admin. This is the Stscope application space — connected with the same secure auth as all ecosystem portals.</p>
         </div>
     </div>
 
     <!-- MENU SECTION VIEWS (Products / Consulting & Services / Career) -->
     <div id="products-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: flex-end; gap: 12px; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #7c3aed; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+                        style="color: #7c3aed; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
             </div>
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0;"
                     aria-label="Go back to main screen">
-                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 48px; height: 48px;">
+                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 64px; height: 64px;">
                 </button>
             </div>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
-            <h2 style="margin: 0 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Products</h2>
-            <p style="margin: 0; color: #475569; max-width: 560px;">Explore the Joining Hands ecosystem products — ProConnect, GramConnect, Mobility, Stscope and more, united by Together Forever.</p>
+            <h2 style="margin: 0; color: #0f172a; font-family: Calibri, sans-serif; font-weight: 900;">Launching Soon</h2>
         </div>
     </div>
 
     <div id="consulting-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: flex-end; gap: 12px; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #ea580c; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+                        style="color: #ea580c; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
             </div>
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0;"
                     aria-label="Go back to main screen">
-                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 48px; height: 48px;">
+                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 64px; height: 64px;">
                 </button>
             </div>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
-            <h2 style="margin: 0 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Consulting &amp; Services</h2>
-            <p style="margin: 0; color: #475569; max-width: 560px;">Guidance, community programs and professional services to help members connect, collaborate and grow.</p>
+            <h2 style="margin: 0; color: #0f172a; font-family: Calibri, sans-serif; font-weight: 900;">Launching Soon</h2>
         </div>
     </div>
 
     <div id="career-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: flex-end; gap: 12px; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #059669; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+                        style="color: #059669; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
             </div>
             <div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0;"
                     aria-label="Go back to main screen">
-                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 48px; height: 48px;">
+                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 64px; height: 64px;">
                 </button>
             </div>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
-            <h2 style="margin: 0 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Career Opportunity</h2>
-            <p style="margin: 0; color: #475569; max-width: 560px;">Join hands with us — explore open roles, volunteering and opportunities to serve the nation and grow together.</p>
+            <h2 style="margin: 0; color: #0f172a; font-family: Calibri, sans-serif; font-weight: 900;">Launching Soon</h2>
         </div>
     </div>
 
@@ -2305,23 +2274,18 @@
         <!-- Top Fixed Bar -->
         <header class="rapido-header">
             <div class="universal-app-header"
-                style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; box-sizing: border-box;">
-                <!-- LEFT: Joining Hands Logo ONLY -->
-                <div style="pointer-events: auto; display: flex; align-items: center;">
+                style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--d header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><svg class="tile-symbol-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 50 14 L 50 86" /><path d="M 14 50 L 86 50" /><path d="M 50 14 L 84 14" /><path d="M 86 50 L 86 84" /><path d="M 50 86 L 16 86" /><path d="M 14 50 L 14 16" /></g><circle cx="32" cy="32" r="3.5" fill="#ffffff" /><circle cx="68" cy="32" r="3.5" fill="#ffffff" /><circle cx="32" cy="68" r="3.5" fill="#ffffff" /><circle cx="68" cy="68" r="3.5" fill="#ffffff" /></svg></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                     <i class="fa-solid fa-handshake-angle"
-                        style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);"></i>
-                </div>
-                <!-- RIGHT: Home -->
-                <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+                </div><div style="pointer-events: auto; display: flex; align-items: center;">
                     <button onclick="returnToLanding()"
                         style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                         onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                         aria-label="Go back to main screen">
                         <img src="/static/images/new_home_icon.png" alt="Home"
-                            style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                            style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
                     </button>
-                </div>
-            </div>
+                </div></div></div>
         </header>
 
         <!-- Main Body (Rider View) -->
@@ -2793,23 +2757,18 @@
         style="background-color: #06090d; min-height: 100vh; position: relative; display: none; width: 100%; height: 100%; z-index: 9999;">
         <!-- Nav / Back Button (Floating above iframe) -->
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <!-- LEFT: Joining Hands Logo ONLY -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--i header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><img src="/static/images/bharatmata_bg.png" onerror="if(this.src.indexOf('bharatamata')===-1)this.src='/static/images/bharatamata_bg.png';" alt="Bharat Mata" class="tile-symbol-img"></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);"></i>
-            </div>
-            <!-- RIGHT: Home -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
 
         <!-- Iframe isolating the complex React-translated UI -->
         <iframe src="/red-app"
@@ -2821,23 +2780,18 @@
         style="background-color: #07050a; min-height: 100vh; position: relative; display: none; width: 100%; height: 100%; z-index: 9999;">
         <!-- Nav / Back Button (Floating above iframe) -->
         <div class="universal-app-header"
-            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
-            <!-- LEFT: Joining Hands Logo ONLY -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--o header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><img src="/static/images/shankar.png" alt="Shankar Nag" class="tile-symbol-img"></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
                 <i class="fa-solid fa-handshake-angle"
-                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);"></i>
-            </div>
-            <!-- RIGHT: Home -->
-            <div style="pointer-events: auto; display: flex; align-items: center;">
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
                 <button onclick="returnToLanding()"
                     style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                     aria-label="Go back to main screen">
                     <img src="/static/images/new_home_icon.png" alt="Home"
-                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
                 </button>
-            </div>
-        </div>
+            </div></div></div>
 
         <!-- Iframe isolating the presentation UI -->
         <iframe src="/presentation"

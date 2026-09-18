@@ -50,6 +50,13 @@ python server.py
 Open your web browser and navigate to:
 👉 **[http://localhost:8080](http://localhost:8080)**
 
+### 4. Forward the Local Port with Cloudflare
+With the server running, start a temporary public tunnel:
+```bash
+./scripts/cloudflare-tunnel.sh
+```
+Cloudflare will print the public `trycloudflare.com` URL. Set `PORT` or `HOST` when forwarding a different local bind address.
+
 ---
 
 ## 🔑 Default Login Accounts & Credentials
