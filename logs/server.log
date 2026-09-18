@@ -1,0 +1,78 @@
+{"timestamp": "2026-08-28T07:41:12.023840", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T07:42:46.733597", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-28T07:42:51.386362", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T07:42:51.809471", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:38.403733", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:38.714089", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:38.926099", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:39.128899", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:39.206346", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:39.833416", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:40.304265", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:40.701667", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:41.109997", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:41.811770", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T09:06:42.301583", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T17:13:27.239574", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T17:13:36.189055", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-28T17:13:51.057482", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-29T21:21:26.160017", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-29T21:22:28.767442", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-29T21:22:41.076630", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-29T21:22:44.294679", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-29T21:23:41.044308", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-29T21:24:02.976696", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-08-31T07:51:52.044306", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.047138", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.057061", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.116630", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.132030", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.825420", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.828483", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.916223", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.924557", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-08-31T07:51:52.949777", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-05T13:36:27.545442", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:32.561351", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:37.834989", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.289619", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.289798", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.289840", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.289978", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.290984", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.292829", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.297895", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-05T13:36:43.299818", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-06T00:21:52.496974", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-06T00:22:11.621636", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-06T00:22:11.765038", "level": "INFO", "message": "User authenticated successfully via JWT: member@joininghands.org (ID: 1)"}
+{"timestamp": "2026-09-15T22:32:21.154514", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:26.270153", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:27.910246", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:28.046048", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:28.180971", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:28.390907", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:29.289291", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:29.467057", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:33.050399", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:33.229869", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:33.378158", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:33.579130", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:33.787948", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:34.807739", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:34.938950", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:35.100898", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:35.237823", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:35.407889", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:35.559796", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:35.714306", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:35.872230", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:36.100099", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:37.134790", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:37.327524", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:37.549617", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:42.611868", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:42.778126", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:43.038445", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:32:43.191107", "level": "WARN", "message": "Failed login attempt for email: tejas"}
+{"timestamp": "2026-09-15T22:33:00.751511", "level": "WARN", "message": "Failed login attempt for email: tejas"}

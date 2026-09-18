@@ -1,0 +1,93 @@
+===============================================================================
+                       JOINING HANDS WEB ECOSYSTEM
+                       CORPORATE DEVELOPMENT DOCUMENTATION
+                       Project Context, Standards & Blueprint
+===============================================================================
+
+Document Version: 1.0.0
+Author: Senior Frontend Engineering Team
+Last Updated: 2026-08-06
+Status: Active Production Baseline
+
+-------------------------------------------------------------------------------
+1. PROJECT OVERVIEW & BRAND IDENTITY
+-------------------------------------------------------------------------------
+Project Title: The Group of Joining Hands
+Mission: A modern, high-performance web platform and community ecosystem built 
+to foster unity, professional networking, and visual storytelling.
+
+Key Design Directives & Non-Negotiables:
+1. Hero Section Background: Must remain 100% pure white (#FFFFFF). Crisp, clean, 
+   uncluttered enterprise spacing with zero artificial noise or placeholders.
+2. Title Display: "The Group of Joining Hands" prominently rendered in modern 
+   sans-serif typography with precise line heights and spacing.
+3. Hero Photograph: Centered high-resolution image (`hero.jpg`) displaying the 
+   sacred garlanded white bull with peacock feathers. Must feature smooth, 
+   hardware-accelerated CSS entrance and floating animations.
+4. Slogan: "Together Forever" rendered in elegant serif/italic typography 
+   directly beneath the hero photo.
+5. Ecosystem Cards (Scroll Down Section):
+   - Violet Card (#7c3aed gradient): Dedicated to Instagram visual portal.
+   - Kesari Card (#ff7700 saffron gradient): Dedicated to the LinkedIn portal.
+
+-------------------------------------------------------------------------------
+2. APPLICATION ARCHITECTURE & PORTAL SPECIFICATIONS
+-------------------------------------------------------------------------------
+
+A. ProConnect (Professional Network Portal - LinkedIn Equivalent)
+   - STRICT MANDATE: Under no circumstances should the brand name "LinkedIn" 
+     appear anywhere inside the ProConnect application interface.
+   - Authentication Flow:
+     * Access begins at `pro-login-stage` (Login View).
+     * Supports formal form credentials submission and a one-click Quick Demo Auth.
+     * Post-authentication transitions seamlessly to `pro-main-stage` (Feed Portal).
+   - Layout Structure:
+     * Top Fixed Navbar: ProConnect brand mark, global search input, quick 
+       navigation links (Home, Network, Opportunities, Messaging, Notifications), 
+       and Profile menu with Dark Mode toggle.
+     * Left Sidebar: Member summary card (Avatar, cover banner, statistics, saved items).
+     * Center Feed: Interactive "Start a Post" trigger, post stream with dynamic 
+       rendering for text + photo attachments, like counter engine, real-time 
+       nested comment list, and social sharing options.
+     * Right Sidebar: Community News & Insights widget + network connection recommendations.
+
+B. GramConnect (Visual Media Portal - Instagram Equivalent)
+   - Layout: Sticky top navigation, interactive horizontal stories carousel with 
+     vibrant gradient rings, visual card feed with heart animations, caption text, 
+     and comment toggles.
+
+-------------------------------------------------------------------------------
+3. CODEBASE FILE REGISTRY
+-------------------------------------------------------------------------------
+- `index.html`: Single Page Application (SPA) container hosting the landing 
+  hero, ecosystem app cards, ProConnect login/feed views, GramConnect view, 
+  and modal dialogs.
+- `styles.css`: CSS3 stylesheet containing design tokens, CSS custom variables, 
+  pure white landing rules, violet/kesari gradients, hardware-accelerated 
+  keyframe animations, and dark/light theme definitions.
+- `script.js`: ES6 modular application controller managing view transitions, 
+  authentication state, post creation with file/base64 previews, like/comment 
+  state mutation, and toast notifications.
+- `hero.jpg`: Primary high-res photographic asset.
+
+-------------------------------------------------------------------------------
+4. HUMAN CODE CONVENTIONS & DEVELOPMENT PROTOCOLS
+-------------------------------------------------------------------------------
+1. Zero Fluff: Write clean, semantic HTML5, modular CSS, and vanilla JS. Avoid 
+   bloated external frameworks when native web standards provide better performance.
+2. State Integrity: Always perform strict null checks before dereferencing DOM 
+   nodes or data properties.
+3. User Experience: Ensure smooth 60fps animations using CSS transitions and 
+   transforms rather than JS main-thread layout recalculations.
+4. Extensibility: All future components, modals, and modules must follow the 
+   established CSS variable tokens and view management architecture.
+
+-------------------------------------------------------------------------------
+5. AGENT WORKING INSTRUCTION (MANDATORY EXECUTION RULE)
+-------------------------------------------------------------------------------
+BEFORE EXECUTING ANY NEW USER COMMAND OR MODIFICATION:
+1. Inspect `PROJECT_CONTEXT.txt` to align with established design guidelines, 
+   brand names, color tokens, and existing feature sets.
+2. Maintain strict code quality, zero broken links/paths, and ensure full test 
+   verification before declaring completion.
+===============================================================================

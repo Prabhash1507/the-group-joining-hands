@@ -1,0 +1,181 @@
+===============================================================================
+                       THE GROUP OF JOINING HANDS
+                       PROJECT ARCHITECTURE & BLUEPRINT
+                       File: PROJECT_TEXT.txt
+===============================================================================
+
+This document provides a comprehensive overview of "The Group of Joining Hands"
+integrated web ecosystem. It covers the core mission, project architecture,
+software portal modules, technological stack, directory structure, file registry,
+database schemas, and operational instructions.
+
+-------------------------------------------------------------------------------
+1. EXECUTIVE OVERVIEW & Brand IDENTITY
+-------------------------------------------------------------------------------
+* Project Title: The Group of Joining Hands
+* Slogan & Motto: "Together Forever" (the architectural core of community trust)
+* Core Concept: A single-login, high-performance community gateway that merges 
+  professional career development (ProConnect), lifestyle visual sharing 
+  (GramConnect), and local ride-hailing services (H Rides) into one unified digital
+  sanctuary.
+* Non-Negotiable Aesthetics:
+  - Hero Section Background: Must remain 100% pure white (#FFFFFF) with clean 
+    and spacious layouts.
+  - Slogan: "Together Forever" rendered in elegant serif/italic typography 
+    under the hero photograph.
+  - Centered Hero Image: A high-res photograph (`hero.jpg`) displaying the 
+    sacred garlanded white bull with peacock feathers, featuring hardware-accelerated
+    CSS floating and entry animations.
+  - Ecosystem cards (3D tiles): Compact interactive elements with color gradients:
+    - Violet Card/Gradients (#7c3aed): GramConnect (Visual Instagram equivalent)
+    - Kesari/Saffron Card/Gradients (#ff7700): ProConnect (Professional LinkedIn equivalent)
+    - H Rides Card: Dedicated Commuter transport hub.
+    - I Initiatives Card: Youth Welfare and Outreach program.
+
+-------------------------------------------------------------------------------
+2. SOFTWARE MODULES & PORTAL SPECIFICATIONS
+-------------------------------------------------------------------------------
+
+A. Landing Page & Hub
+   - SPA container displaying a scrolling banner ("The Group of Joining Hands"),
+     centered float-animated sacred bull image, and elegant typography.
+   - A left sliding sidebar navigation drawer containing "About Our Mission" 
+     typewriter typewriter animation, portal entry links, and contact channels.
+   - Five interactive compact 3D tiles (Letters D, H, I, P, E) providing 
+     seamless gateways to the active portals.
+   - A dedicated "Investor Relations" section in the sidebar that links to 
+     the 10-slide interactive slide deck.
+
+B. ProConnect (Professional Career Portal - LinkedIn Equivalent)
+   - strictly ad-free networking portal. The brand term "LinkedIn" is never
+     exposed in the user interface.
+   - Secure authentication stages: login, signup, and a Quick Demo Auth.
+   - Fixed top navigation, search filters, and profile menu with light/dark toggling.
+   - Left sidebar displaying verified profile details, summary, and profile metrics.
+   - Center feed stream for publishing posts with file attachments, nested comment
+     systems, and real-time social sharing.
+   - Right sidebar widgets displaying community updates and connection invites.
+   - Skills endorsement, education tracking, projects list, and certifications.
+
+C. GramConnect (Visual Media Portal - Instagram Equivalent)
+   - Visual-focused feed layout.
+   - Horizontal stories carousel with colorful gradient rings.
+   - High-fidelity grid timeline showing image attachments and descriptions.
+   - Double-tap floating heart micro-animations for likes.
+   - Interactive nested comments panel.
+
+D. H Rides (Transit & Carpooling - Rapido Equivalent)
+   - Integrated booking system utilizing a custom HTML5 Canvas-based GPS grid.
+   - Dual-mode interfaces: Rider (client booking) and Captain (driver dispatch).
+   - Simulated active GPS tracking with real-time route tracing.
+   - Built-in rider-captain chat messenger.
+   - Server-backed ride status board (Pending -> Accepted -> In Progress -> Complete).
+
+E. Admin Moderation & Observability Panel
+   - Secure dashboard showing system statistics (total users, posts, messages, and reports).
+   - Real-time server health and database status monitors.
+   - System audit-ready logs capturing logins, IP addresses, and timestamps.
+   - Moderation queue for handling reported content and blocking/muting users.
+
+F. Investor Presentation Deck
+   - Interactive 10-slide HTML presentation accessible via `/presentation`.
+   - Widescreen 16:9 PowerPoint file `Joining_Hands_Investor_Presentation.pptx`
+     generated in the workspace root.
+   - Covered slides: Cover page, Mission/Vision, Market Problem, Ecosystem Solution,
+     Product Portals, Tech Stack, Platform Economics (Volume Values), User Journey,
+     Competitive Matrix, and Future Roadmap (Q1-Q4 2027).
+
+-------------------------------------------------------------------------------
+3. TECHNICAL STACK & ARCHITECTURE
+-------------------------------------------------------------------------------
+* Frontend:
+  - Vanilla HTML5 & CSS3: Uses native custom variables, transition triggers, 
+    flexbox/grid styling, and hardware-accelerated animations. Bypasses bulky,
+    third-party client runtimes for maximum performance.
+  - Vanilla ES6 JavaScript: Handles modular SPA routing, state updates, canvas
+     mapping, likes/comments triggers, and JWT session handling.
+* Backend:
+  - Python 3.8+ `http.server` & `socketserver`: Built as a customized 
+    `ThreadingTCPServer` that executes response gzip compression and handles CORS.
+  - RESTful APIs: Decodes JSON payloads, manages token revocation, rate-limits,
+    and supports dynamic file routing.
+* Database:
+  - SQLite3: Relational, fully-normalized SQL schema storing:
+    - `users` (credentials, status, role)
+    - `sessions` & `password_reset_tokens`
+    - `posts` & `post_comments` (nested list structure)
+    - `direct_messages` & `notifications`
+    - `connections` (friend request accept/decline states)
+    - `rapido_rides` & `rapido_chats` (coordinate telemetry logs)
+* Security Features:
+  - Cryptographic RFC 7519 JSON Web Tokens (JWT) for authentication.
+  - Sliding-window rate limiting on critical routes to defend against spam.
+  - Password encryption using hashed algorithms.
+  - Strict input HTML sanitization and magic-byte image validation.
+
+-------------------------------------------------------------------------------
+4. DIRECTORY STRUCTURE & FILE REGISTRY
+-------------------------------------------------------------------------------
+
+/ (Project Root)
+│
+├── server.py                        # Entry-point. Runs the HTTP and API server.
+├── Joining_Hands_Investor_Presentation.pptx # Widescreen PowerPoint Presentation
+├── requirements.txt                 # Project dependencies (Standard Library Default)
+├── run_tests.ps1                    # PowerShell runner CLI for test regressions
+├── hero.jpg                         # White Bull photograph for the landing page
+├── k3.png                           # Graphic logo asset
+├── AGENTS.md                        # Behavioral protocols for development
+├── PROJECT_CONTEXT.txt              # Production brand guidelines and baseline rules
+├── PROJECT_TEXT.txt                 # [THIS FILE] Core documentation of the project
+│
+├── app/                             # Python Backend Application Packages
+│   ├── config/
+│   │   └── config.py                # Environment configuration paths and secrets
+│   ├── database/
+│   │   └── db.py                    # SQLite database connectors and initial tables seed
+│   └── helpers/
+│       ├── jwt_auth.py              # JWT authentication tokens encoders/decoders
+│       └── security.py              # Magic-bytes validations, hashing, rate limits
+│
+├── database/                        # Database Storage
+│   └── database.db                  # Local relational database file
+│
+├── static/                          # Static Web Files
+│   ├── css/
+│   │   └── styles.css               # Styling rules, variables, and responsive design
+│   ├── js/
+│   │   └── script.js                # Core JS logic, SPA navigation, and API connections
+│   └── uploads/                     # Member upload directories (images, files)
+│
+├── templates/                       # HTML Document Templates
+│   ├── index.html                   # Core SPA template containing landing and portals
+│   └── presentation.html            # 10-slide interactive HTML presentation page
+│
+└── tests/                           # Test Matrix Suite
+    ├── test_jwt_and_backend_solid.py # Session validation & encryption test cases
+    ├── test_real_google_oauth.py    # OIDC verification test suite
+    ├── test_rapido_system.py        # Commute canvas and state-machine tests
+    └── test_six_feature_extensions.py # Search, profiles, and verification matrix
+
+-------------------------------------------------------------------------------
+5. REGULATION, AUDITS & VERIFICATION FLOWS
+-------------------------------------------------------------------------------
+
+1. Startup Server:
+   Run the following in terminal:
+   `python server.py`
+   It binds to port 8080. Open `http://localhost:8080` in a browser.
+
+2. Run Automated Regression Matrix:
+   Run the unit test discovery suite:
+   `python -m unittest discover -s tests -p "*.py"`
+   Note: Some email token tests require `APP_ENV=development` in the environment
+   to allow bypass variables to print out, which can be run in PowerShell as:
+   `$env:APP_ENV="development"; python -m unittest discover -s tests -p "*.py"`
+
+3. Production Hardening:
+   The database maintains rate limiters, session tracking tables, and input
+   sanitizers to prevent SQL injections or cross-site scripting (XSS), fully
+   auditable via `logs/` audit entries.
+===============================================================================

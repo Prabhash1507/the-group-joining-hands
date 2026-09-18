@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "c304b286-6781-4903-9c05-e3ef4ceecb35",
+		"name": "The Group of Joining Hands - REST API Collection",
+		"description": "Enterprise Postman/Newman API Test Suite for Joining Hands Web Ecosystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth - Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"member@joininghands.org\",\n  \"password\": \"demo1234\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["api", "auth", "login"]
+				}
+			}
+		},
+		{
+			"name": "Posts - Stream Timeline",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/posts",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["api", "posts"]
+				}
+			}
+		},
+		{
+			"name": "Admin - System Overview",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/admin/overview",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["api", "admin", "overview"]
+				}
+			}
+		}
+	]
+}
