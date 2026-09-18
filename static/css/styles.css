@@ -7696,6 +7696,14 @@ input:checked+.slider:before {
 #landing-view.theme-theme17 .layer--theme17,
 #landing-view.theme-theme19 .layer--theme19,
 #landing-view.theme-theme20 .layer--theme20,
+#landing-view.theme-theme21 .layer--theme21,
+#landing-view.theme-theme22 .layer--theme22,
+#landing-view.theme-theme23 .layer--theme23,
+#landing-view.theme-theme24 .layer--theme24,
+#landing-view.theme-metropolis .layer--theme21,
+#landing-view.theme-halo .layer--theme22,
+#landing-view.theme-ember .layer--theme23,
+#landing-view.theme-sapphire .layer--theme24,
 #landing-view.theme-pic1 .layer--theme15,
 #landing-view.theme-pic2 .layer--theme16,
 #landing-view.theme-pic3 .layer--theme17,
@@ -7966,6 +7974,10 @@ input:checked+.slider:before {
 .layer--theme17,
 .layer--theme19,
 .layer--theme20,
+.layer--theme21,
+.layer--theme22,
+.layer--theme23,
+.layer--theme24,
 .layer--pic1,
 .layer--pic2,
 .layer--pic3,
@@ -9641,16 +9653,47 @@ input:checked+.slider:before {
     text-shadow: none !important;
 }
 
-/* About overlay is always rendered on the light landing background when
-   opened via the menu, regardless of active video theme — force dark
-   readable text for every theme (theme rotation otherwise leaves white
-   typewriter text invisible on white). */
+/* Dynamic About contrast: the About title/text color follows the active
+   backdrop theme (same per-theme palette as the title system) so no theme
+   overcontrasts the About copy. Pure CSS variables -> updates automatically
+   on theme rotation, even while the overlay is open. */
 #landing-view.menu-active .about-overlay-title,
 #landing-view.menu-active .about-overlay-text,
 #landing-view.menu-active .about-overlay-text * {
-    color: #1e1b4b !important;
-    text-shadow: none !important;
+    color: var(--about-dynamic-color, #1e1b4b) !important;
+    text-shadow: var(--about-dynamic-shadow, none) !important;
 }
+
+#landing-view.theme-water { --about-dynamic-color: #1e1b4b; --about-dynamic-shadow: none; }
+#landing-view.theme-flow { --about-dynamic-color: #fde047; --about-dynamic-shadow: 0 2px 14px rgba(245, 158, 11, 0.75), 0 0 24px rgba(253, 224, 71, 0.45); }
+#landing-view.theme-glassflow { --about-dynamic-color: #e9d5ff; --about-dynamic-shadow: 0 2px 14px rgba(168, 85, 247, 0.75), 0 0 24px rgba(216, 180, 254, 0.45); }
+#landing-view.theme-waterflow { --about-dynamic-color: #38bdf8; --about-dynamic-shadow: 0 2px 14px rgba(56, 189, 248, 0.75), 0 0 24px rgba(52, 211, 153, 0.45); }
+#landing-view.theme-6th { --about-dynamic-color: #fdba74; --about-dynamic-shadow: 0 2px 14px rgba(249, 115, 22, 0.75); }
+#landing-view.theme-7th, #landing-view.theme-cosmic { --about-dynamic-color: #f472b6; --about-dynamic-shadow: 0 2px 14px rgba(236, 72, 153, 0.75), 0 0 24px rgba(129, 140, 248, 0.45); }
+#landing-view.theme-8th, #landing-view.theme-air, #landing-view.theme-9th, #landing-view.theme-10th, #landing-view.theme-nova { --about-dynamic-color: #7dd3fc; --about-dynamic-shadow: 0 2px 14px rgba(56, 189, 248, 0.75), 0 0 24px rgba(59, 130, 246, 0.45); }
+#landing-view.theme-theme1, #landing-view.theme-aurora { --about-dynamic-color: #6ee7b7; --about-dynamic-shadow: 0 2px 14px rgba(52, 211, 153, 0.75); }
+#landing-view.theme-theme2, #landing-view.theme-nebula { --about-dynamic-color: #f0abfc; --about-dynamic-shadow: 0 2px 14px rgba(232, 121, 249, 0.75); }
+#landing-view.theme-theme3, #landing-view.theme-prism { --about-dynamic-color: #67e8f9; --about-dynamic-shadow: 0 2px 14px rgba(34, 211, 238, 0.75); }
+#landing-view.theme-theme4, #landing-view.theme-vortex { --about-dynamic-color: #93c5fd; --about-dynamic-shadow: 0 2px 14px rgba(96, 165, 250, 0.75); }
+#landing-view.theme-theme5, #landing-view.theme-eclipse { --about-dynamic-color: #fde047; --about-dynamic-shadow: 0 2px 14px rgba(245, 158, 11, 0.75); }
+#landing-view.theme-theme6, #landing-view.theme-zenith { --about-dynamic-color: #5eead4; --about-dynamic-shadow: 0 2px 14px rgba(45, 212, 191, 0.75); }
+#landing-view.theme-theme7, #landing-view.theme-mirage { --about-dynamic-color: #fda4af; --about-dynamic-shadow: 0 2px 14px rgba(251, 113, 133, 0.75); }
+#landing-view.theme-theme8, #landing-view.theme-radiance { --about-dynamic-color: #fef08a; --about-dynamic-shadow: 0 2px 14px rgba(250, 204, 21, 0.75); }
+#landing-view.theme-theme9, #landing-view.theme-solstice { --about-dynamic-color: #7dd3fc; --about-dynamic-shadow: 0 2px 14px rgba(56, 189, 248, 0.75); }
+#landing-view.theme-theme10, #landing-view.theme-horizon { --about-dynamic-color: #c7d2fe; --about-dynamic-shadow: 0 2px 14px rgba(129, 140, 248, 0.75); }
+#landing-view.theme-theme11, #landing-view.theme-flux { --about-dynamic-color: #86efac; --about-dynamic-shadow: 0 2px 14px rgba(74, 222, 128, 0.75); }
+#landing-view.theme-theme12, #landing-view.theme-cascade { --about-dynamic-color: #93c5fd; --about-dynamic-shadow: 0 2px 14px rgba(96, 165, 250, 0.75); }
+#landing-view.theme-theme13, #landing-view.theme-astral { --about-dynamic-color: #f472b6; --about-dynamic-shadow: 0 2px 14px rgba(244, 114, 182, 0.75); }
+#landing-view.theme-theme14, #landing-view.theme-lumina { --about-dynamic-color: #fde047; --about-dynamic-shadow: 0 2px 14px rgba(251, 191, 36, 0.75); }
+#landing-view.theme-theme15, #landing-view.theme-oasis, #landing-view.theme-pic1 { --about-dynamic-color: #fde047; --about-dynamic-shadow: 0 2px 14px rgba(253, 224, 71, 0.75); }
+#landing-view.theme-theme16, #landing-view.theme-summit, #landing-view.theme-pic2 { --about-dynamic-color: #bae6fd; --about-dynamic-shadow: 0 2px 14px rgba(125, 211, 252, 0.75); }
+#landing-view.theme-theme17, #landing-view.theme-haven, #landing-view.theme-pic3 { --about-dynamic-color: #bbf7d0; --about-dynamic-shadow: 0 2px 14px rgba(134, 239, 172, 0.75); }
+#landing-view.theme-theme19, #landing-view.theme-elysium, #landing-view.theme-pic5 { --about-dynamic-color: #e9d5ff; --about-dynamic-shadow: 0 2px 14px rgba(216, 180, 254, 0.75); }
+#landing-view.theme-theme20, #landing-view.theme-solitude, #landing-view.theme-pic6 { --about-dynamic-color: #a7f3d0; --about-dynamic-shadow: 0 2px 14px rgba(110, 231, 183, 0.75); }
+#landing-view.theme-theme21, #landing-view.theme-metropolis { --about-dynamic-color: #fde047; --about-dynamic-shadow: 0 2px 14px rgba(245, 158, 11, 0.75); }
+#landing-view.theme-theme22, #landing-view.theme-halo { --about-dynamic-color: #1e1b4b; --about-dynamic-shadow: none; }
+#landing-view.theme-theme23, #landing-view.theme-ember { --about-dynamic-color: #1e1b4b; --about-dynamic-shadow: none; }
+#landing-view.theme-theme24, #landing-view.theme-sapphire { --about-dynamic-color: #bae6fd; --about-dynamic-shadow: 0 2px 14px rgba(125, 211, 252, 0.75); }
 
 /* ==========================================================================
    DYNAMIC "THE GROUP OF JOINING HANDS", "TOGETHER FOREVER", "MENU", "AI" & "SETTINGS" COLOR SYSTEM BY BACKGROUND THEME
@@ -10359,6 +10402,110 @@ input:checked+.slider:before {
 #landing-view.theme-pic6 .divider-icon {
     color: #6ee7b7 !important;
     border-color: rgba(110, 231, 183, 0.55) !important;
+}
+
+/* 10. New Server Video Themes: Metropolis (geometric blocks) -> Gold */
+#landing-view.theme-theme21 .title-single-box,
+#landing-view.theme-theme21 .divider-slogan,
+#landing-view.theme-theme21 .slogan-word-icon,
+#landing-view.theme-theme21 .radium-word-icon,
+#landing-view.theme-theme21 .menu-tile-text,
+#landing-view.theme-theme21 .ai-tile-text,
+#landing-view.theme-theme21 .settings-tile-text,
+#landing-view.theme-metropolis .title-single-box,
+#landing-view.theme-metropolis .divider-slogan,
+#landing-view.theme-metropolis .slogan-word-icon,
+#landing-view.theme-metropolis .radium-word-icon,
+#landing-view.theme-metropolis .menu-tile-text,
+#landing-view.theme-metropolis .ai-tile-text,
+#landing-view.theme-metropolis .settings-tile-text,
+#landing-view.theme-metropolis .corner-brand-text {
+    color: #fde047 !important;
+    text-shadow: 0 2px 14px rgba(245, 158, 11, 0.75) !important;
+}
+
+#landing-view.theme-theme21 .divider-icon,
+#landing-view.theme-metropolis .divider-icon {
+    color: #f59e0b !important;
+    border-color: rgba(245, 158, 11, 0.55) !important;
+}
+
+/* 11. Halo (white light tunnel) -> Deep royal navy */
+#landing-view.theme-theme22 .title-single-box,
+#landing-view.theme-theme22 .divider-slogan,
+#landing-view.theme-theme22 .slogan-word-icon,
+#landing-view.theme-theme22 .radium-word-icon,
+#landing-view.theme-theme22 .menu-tile-text,
+#landing-view.theme-theme22 .ai-tile-text,
+#landing-view.theme-theme22 .settings-tile-text,
+#landing-view.theme-halo .title-single-box,
+#landing-view.theme-halo .divider-slogan,
+#landing-view.theme-halo .slogan-word-icon,
+#landing-view.theme-halo .radium-word-icon,
+#landing-view.theme-halo .menu-tile-text,
+#landing-view.theme-halo .ai-tile-text,
+#landing-view.theme-halo .settings-tile-text,
+#landing-view.theme-halo .corner-brand-text {
+    color: #1e1b4b !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 16px rgba(99, 102, 241, 0.25) !important;
+}
+
+#landing-view.theme-theme22 .divider-icon,
+#landing-view.theme-halo .divider-icon {
+    color: #4338ca !important;
+    border-color: rgba(99, 102, 241, 0.45) !important;
+}
+
+/* 12. Ember (warm orange flow) -> Deep royal navy */
+#landing-view.theme-theme23 .title-single-box,
+#landing-view.theme-theme23 .divider-slogan,
+#landing-view.theme-theme23 .slogan-word-icon,
+#landing-view.theme-theme23 .radium-word-icon,
+#landing-view.theme-theme23 .menu-tile-text,
+#landing-view.theme-theme23 .ai-tile-text,
+#landing-view.theme-theme23 .settings-tile-text,
+#landing-view.theme-ember .title-single-box,
+#landing-view.theme-ember .divider-slogan,
+#landing-view.theme-ember .slogan-word-icon,
+#landing-view.theme-ember .radium-word-icon,
+#landing-view.theme-ember .menu-tile-text,
+#landing-view.theme-ember .ai-tile-text,
+#landing-view.theme-ember .settings-tile-text,
+#landing-view.theme-ember .corner-brand-text {
+    color: #1e1b4b !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.65) !important;
+}
+
+#landing-view.theme-theme23 .divider-icon,
+#landing-view.theme-ember .divider-icon {
+    color: #7c2d12 !important;
+    border-color: rgba(124, 45, 18, 0.45) !important;
+}
+
+/* 13. Sapphire (deep royal blue waves) -> Ice Sky Blue */
+#landing-view.theme-theme24 .title-single-box,
+#landing-view.theme-theme24 .divider-slogan,
+#landing-view.theme-theme24 .slogan-word-icon,
+#landing-view.theme-theme24 .radium-word-icon,
+#landing-view.theme-theme24 .menu-tile-text,
+#landing-view.theme-theme24 .ai-tile-text,
+#landing-view.theme-theme24 .settings-tile-text,
+#landing-view.theme-sapphire .title-single-box,
+#landing-view.theme-sapphire .divider-slogan,
+#landing-view.theme-sapphire .slogan-word-icon,
+#landing-view.theme-sapphire .radium-word-icon,
+#landing-view.theme-sapphire .menu-tile-text,
+#landing-view.theme-sapphire .ai-tile-text,
+#landing-view.theme-sapphire .settings-tile-text,
+#landing-view.theme-sapphire .corner-brand-text {
+    color: #bae6fd !important;
+    text-shadow: 0 2px 14px rgba(125, 211, 252, 0.75), 0 0 24px rgba(59, 130, 246, 0.45) !important;
+}
+
+#landing-view.theme-theme24 .divider-icon,
+#landing-view.theme-sapphire .divider-icon {
+    color: #7dd3fc !important;
+    border-color: rgba(125, 211, 252, 0.55) !important;
 }
 
 /* Bring Together Forever closer to the handshake button */

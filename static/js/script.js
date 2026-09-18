@@ -397,7 +397,7 @@ function startAboutTypewriter(forceRestart = false) {
     aboutCurrentCharIndex = 0;
     isAboutTyping = true;
 
-    textEl.innerHTML = '<span class="typing-caret" aria-hidden="true" style="background: #1e1b4b;"></span>';
+    textEl.innerHTML = '<span class="typing-caret" aria-hidden="true" style="background: currentColor;"></span>';
 
     function typeStep() {
         if (!isAboutTyping) return;
@@ -405,7 +405,7 @@ function startAboutTypewriter(forceRestart = false) {
         if (aboutCurrentCharIndex < totalChars) {
             aboutCurrentCharIndex++;
             const renderedHtml = renderTypedAboutHTML(aboutCurrentCharIndex);
-            textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true" style="background: #1e1b4b;"></span>';
+            textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true" style="background: currentColor;"></span>';
 
             // Calibrated 35-second natural typewriter pace
             let delay = 45;
@@ -5993,6 +5993,10 @@ const themeAliasMap = {
     "haven": "theme17",
     "elysium": "theme19",
     "solitude": "theme20",
+    "metropolis": "theme21",
+    "halo": "theme22",
+    "ember": "theme23",
+    "sapphire": "theme24",
     "pic1": "theme15",
     "pic2": "theme16",
     "pic3": "theme17",
@@ -6011,7 +6015,8 @@ const themeRotationList = [
     "water", "flow", "glassflow", "waterflow", "8th",
     "theme1", "theme2", "theme3", "theme4", "theme5", "theme6", "theme7",
     "theme8", "theme9", "theme10", "theme11", "theme12", "theme13", "theme14",
-    "theme15", "theme16", "theme17", "theme19", "theme20", "10th", "7th"
+    "theme15", "theme16", "theme17", "theme19", "theme20",
+    "theme21", "theme22", "theme23", "theme24", "10th", "7th"
 ];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
@@ -6063,7 +6068,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "flowCanvas", "glassflowCanvas", "waterflowCanvas", "7thCanvas", "8thCanvas", "10thCanvas",
         "theme1Canvas", "theme2Canvas", "theme3Canvas", "theme4Canvas", "theme5Canvas", "theme6Canvas", "theme7Canvas",
         "theme8Canvas", "theme9Canvas", "theme10Canvas", "theme11Canvas", "theme12Canvas", "theme13Canvas", "theme14Canvas",
-        "theme15Canvas", "theme16Canvas", "theme17Canvas", "theme19Canvas", "theme20Canvas"
+        "theme15Canvas", "theme16Canvas", "theme17Canvas", "theme19Canvas", "theme20Canvas",
+        "theme21Canvas", "theme22Canvas", "theme23Canvas", "theme24Canvas"
     ];
     themeCanvases.forEach(id => {
         const canvas = document.getElementById(id);
@@ -6128,8 +6134,10 @@ function switchBackdropTheme(theme, isAuto = false) {
             "theme1", "theme2", "theme3", "theme4", "theme5", "theme6", "theme7",
             "theme8", "theme9", "theme10", "theme11", "theme12", "theme13", "theme14",
             "theme15", "theme16", "theme17", "theme19", "theme20",
+            "theme21", "theme22", "theme23", "theme24",
             "pic1", "pic2", "pic3", "pic5", "pic6",
-            "oasis", "summit", "haven", "elysium", "solitude"
+            "oasis", "summit", "haven", "elysium", "solitude",
+            "metropolis", "halo", "ember", "sapphire"
         ];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${canonicalTheme}`);
@@ -6219,6 +6227,10 @@ function getCanvasIdForTheme(theme) {
         "theme17": "theme17Canvas",
         "theme19": "theme19Canvas",
         "theme20": "theme20Canvas",
+        "theme21": "theme21Canvas",
+        "theme22": "theme22Canvas",
+        "theme23": "theme23Canvas",
+        "theme24": "theme24Canvas",
         "pic1": "theme15Canvas",
         "pic2": "theme16Canvas",
         "pic3": "theme17Canvas",
