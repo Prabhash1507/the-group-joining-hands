@@ -5157,3 +5157,4 @@
 {"timestamp": "2026-09-18T18:43:41.323569", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/new-1.mp4", "status": 500}
 {"timestamp": "2026-09-18T18:43:51.941330", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/theme4.mp4", "status": 500}
 {"timestamp": "2026-09-18T18:43:57.623650", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/theme12.mp4", "status": 500}
+{"timestamp": "2026-09-18T18:43:59.957679", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/theme10.mp4", "status": 500}
