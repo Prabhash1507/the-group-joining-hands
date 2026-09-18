@@ -887,9 +887,17 @@ function toggleLandingSidebar() {
     }
 }
 
-// MENU vertical dropdown (below MENU button)
+// MENU expands inside the MENU button itself (single enlarging box)
 function toggleMenuDropdown(event) {
     if (event) event.stopPropagation();
+    const landingView = document.getElementById("landing-view");
+    if (landingView && landingView.classList.contains("menu-active")) {
+        // About overlay is open — MENU click returns home automatically
+        closeMenuDropdown();
+        if (typeof closeLandingSidebar === "function") closeLandingSidebar();
+        else landingView.classList.remove("menu-active");
+        return;
+    }
     const panel = document.getElementById("menuDropdownPanel");
     const btn = document.getElementById("menuFloatingBtn");
     if (!panel) {
@@ -900,14 +908,20 @@ function toggleMenuDropdown(event) {
     closeApiPanel();
     closeSettingsPanel();
     panel.classList.toggle("active", willOpen);
-    if (btn) btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    if (btn) {
+        btn.classList.toggle("menu-open", willOpen);
+        btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    }
 }
 
 function closeMenuDropdown() {
     const panel = document.getElementById("menuDropdownPanel");
     const btn = document.getElementById("menuFloatingBtn");
     if (panel) panel.classList.remove("active");
-    if (btn) btn.setAttribute("aria-expanded", "false");
+    if (btn) {
+        btn.classList.remove("menu-open");
+        btn.setAttribute("aria-expanded", "false");
+    }
 }
 
 function openMenuAbout() {
