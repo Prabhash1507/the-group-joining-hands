@@ -235,37 +235,137 @@ function initEcosystem3DTiles() {
 }
 
 // ==========================================================================
-// DYNAMIC TYPOGRAPHY ENGINE: Random font per site visit/refresh for About Section
+// DYNAMIC TYPOGRAPHY ENGINE: 6 Highly Distinct & Contrasting Font Categories for About Section
+// 1. Playfair Display (Luxury Editorial Serif)
+// 2. Space Mono (Technical Monospace Typewriter)
+// 3. Cinzel (Classical Roman Imperial Serif)
+// 4. Lora (Warm Literary Book Serif)
+// 5. Outfit (Futuristic Geometric Sans)
+// 6. Cormorant Garamond (Delicate Florentine Renaissance Serif)
 // ==========================================================================
 const ABOUT_FONTS = [
-    { name: 'Inter', family: "'Inter', sans-serif", scale: 1.0, titleScale: 1.0 },
-    { name: 'Manrope', family: "'Manrope', sans-serif", scale: 1.0, titleScale: 1.0 },
-    { name: 'Poppins', family: "'Poppins', sans-serif", scale: 0.96, titleScale: 0.96 },
-    { name: 'Montserrat', family: "'Montserrat', sans-serif", scale: 0.95, titleScale: 0.96 },
-    { name: 'DM Sans', family: "'DM Sans', sans-serif", scale: 1.01, titleScale: 1.0 },
-    { name: 'Lato', family: "'Lato', sans-serif", scale: 1.05, titleScale: 1.04 }
+    { 
+        name: 'Playfair Display', 
+        category: 'Editorial Serif', 
+        family: "'Playfair Display', Georgia, serif", 
+        scale: 1.05, 
+        titleScale: 1.06, 
+        weight: '600', 
+        letterSpacing: '0.01em',
+        lineHeight: '1.62'
+    },
+    { 
+        name: 'Space Mono', 
+        category: 'Tech Monospace', 
+        family: "'Space Mono', 'Courier New', monospace", 
+        scale: 0.90, 
+        titleScale: 0.94, 
+        weight: '400', 
+        letterSpacing: '-0.025em',
+        lineHeight: '1.75'
+    },
+    { 
+        name: 'Cinzel', 
+        category: 'Imperial Roman Serif', 
+        family: "'Cinzel', Georgia, serif", 
+        scale: 0.94, 
+        titleScale: 1.0, 
+        weight: '700', 
+        letterSpacing: '0.035em',
+        lineHeight: '1.7'
+    },
+    { 
+        name: 'Lora', 
+        category: 'Literary Book Serif', 
+        family: "'Lora', Georgia, serif", 
+        scale: 1.03, 
+        titleScale: 1.02, 
+        weight: '500', 
+        letterSpacing: '0.01em',
+        lineHeight: '1.68'
+    },
+    { 
+        name: 'Outfit', 
+        category: 'Geometric Tech Sans', 
+        family: "'Outfit', sans-serif", 
+        scale: 1.04, 
+        titleScale: 1.02, 
+        weight: '500', 
+        letterSpacing: '0.01em',
+        lineHeight: '1.65'
+    },
+    { 
+        name: 'Cormorant Garamond', 
+        category: 'Florentine Fine Serif', 
+        family: "'Cormorant Garamond', Garamond, serif", 
+        scale: 1.18, 
+        titleScale: 1.16, 
+        weight: '600', 
+        letterSpacing: '0.02em',
+        lineHeight: '1.58'
+    }
 ];
 
-function initRandomAboutFont() {
-    let prevFont = null;
+let currentAboutFontIndex = -1;
+
+function getNextAboutFont() {
+    let savedIndex = -1;
     try {
-        prevFont = sessionStorage.getItem('about_current_font');
+        const stored = sessionStorage.getItem('about_font_index');
+        if (stored !== null && stored !== '') {
+            savedIndex = parseInt(stored, 10);
+        }
     } catch (e) { }
 
-    let candidates = ABOUT_FONTS;
-    if (prevFont && ABOUT_FONTS.length > 1) {
-        candidates = ABOUT_FONTS.filter(f => f.name !== prevFont);
+    if (!isNaN(savedIndex) && savedIndex >= 0) {
+        currentAboutFontIndex = (savedIndex + 1) % ABOUT_FONTS.length;
+    } else if (currentAboutFontIndex >= 0) {
+        currentAboutFontIndex = (currentAboutFontIndex + 1) % ABOUT_FONTS.length;
+    } else {
+        currentAboutFontIndex = 0;
     }
-    const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+
     try {
-        sessionStorage.setItem('about_current_font', chosen.name);
+        sessionStorage.setItem('about_font_index', currentAboutFontIndex.toString());
+        sessionStorage.setItem('about_current_font', ABOUT_FONTS[currentAboutFontIndex].name);
     } catch (e) { }
 
-    // Apply strictly to the About Section CSS variables
+    return ABOUT_FONTS[currentAboutFontIndex];
+}
+
+function applyAboutFont(chosen) {
+    if (!chosen) chosen = ABOUT_FONTS[0];
+
+    // Apply strictly to CSS variables for the About Section & menu elements
     document.documentElement.style.setProperty('--about-font-family', chosen.family);
     document.documentElement.style.setProperty('--about-font-scale', chosen.scale);
-    document.documentElement.style.setProperty('--about-title-scale', chosen.titleScale);
-    console.log(`[About Typography] Active Font: ${chosen.name}`);
+    document.documentElement.style.setProperty('--about-font-weight', chosen.weight || '500');
+    document.documentElement.style.setProperty('--about-letter-spacing', chosen.letterSpacing || 'normal');
+    document.documentElement.style.setProperty('--about-line-height', chosen.lineHeight || '1.68');
+
+    // Directly apply inline styles to the About text content
+    const textEl = document.getElementById("landingAboutTypewriter");
+    if (textEl) {
+        textEl.style.fontFamily = chosen.family;
+        textEl.style.fontWeight = chosen.weight || '500';
+        textEl.style.letterSpacing = chosen.letterSpacing || 'normal';
+        textEl.style.lineHeight = chosen.lineHeight || '1.68';
+    }
+
+    // Apply the active font to the About title as well
+    const titleEl = document.querySelector(".about-overlay-title");
+    if (titleEl) {
+        titleEl.style.fontFamily = chosen.family;
+        titleEl.style.letterSpacing = chosen.letterSpacing || 'normal';
+    }
+
+    console.log(`[About Typography] Active Font (${currentAboutFontIndex + 1}/${ABOUT_FONTS.length}): ${chosen.name} [${chosen.category}] -> ${chosen.family}`);
+}
+
+function initRandomAboutFont() {
+    const chosen = getNextAboutFont();
+    applyAboutFont(chosen);
+    return chosen;
 }
 
 // Initialize on script load immediately so font is ready before any render
@@ -295,7 +395,7 @@ function renderTypedAboutHTML(charCount) {
         const sliceLen = Math.min(remaining, part.length);
         const textSlice = part.substring(0, sliceLen);
         remaining -= sliceLen;
-        html += `<p>${textSlice}</p>`;
+        html += `<p style="font-family: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit;">${textSlice}</p>`;
     }
     return html;
 }
@@ -323,8 +423,8 @@ function startAboutTypewriter(forceRestart = false) {
             const renderedHtml = renderTypedAboutHTML(aboutCurrentCharIndex);
             textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true" style="background: #ffffff;"></span>';
 
-            // Relaxed, slow, and easily digestible typewriter pace
-            let delay = 60;
+            // Calibrated 35-second natural typewriter pace
+            let delay = 45;
             let count = 0;
             let lastChar = '';
             for (let i = 0; i < ABOUT_PARAGRAPHS.length; i++) {
@@ -337,13 +437,13 @@ function startAboutTypewriter(forceRestart = false) {
             }
 
             if (lastChar === '.' || lastChar === '!' || lastChar === '?') {
-                delay = 550; // Deep pause at end of sentences
+                delay = 220; // Natural pause at end of sentences
             } else if (lastChar === ',' || lastChar === ';' || lastChar === ':') {
-                delay = 280; // Clear pause at clauses
+                delay = 110; // Pause at clauses
             } else if (lastChar === ' ') {
-                delay = 45;
+                delay = 18;
             } else {
-                delay = 56 + Math.floor(Math.random() * 14); // ~56ms - 70ms per character
+                delay = 24 + Math.floor(Math.random() * 6); // ~24ms - 29ms per character (calibrated +5s faster)
             }
 
             aboutTypewriterTimer = setTimeout(typeStep, delay);
@@ -352,7 +452,7 @@ function startAboutTypewriter(forceRestart = false) {
         }
     }
 
-    aboutTypewriterTimer = setTimeout(typeStep, forceRestart ? 50 : 300);
+    aboutTypewriterTimer = setTimeout(typeStep, forceRestart ? 50 : 200);
 }
 
 function finishAboutTypewriter() {
@@ -420,22 +520,34 @@ function prepareHeroForTypewriter() {
         tile.style.transform = '';
     });
 
-    if (splitWords[0]) splitWords[0].innerHTML = '';
-    if (splitWords[1]) splitWords[1].innerHTML = '';
+    if (splitWords[0]) {
+        splitWords[0].classList.remove('slogan-typing-in');
+        splitWords[0].classList.add('slogan-typing-prep');
+        splitWords[0].innerHTML = '';
+    }
+    if (splitWords[1]) {
+        splitWords[1].classList.remove('slogan-typing-in');
+        splitWords[1].classList.add('slogan-typing-prep');
+        splitWords[1].innerHTML = '';
+    }
     if (splitIcon) {
         splitIcon.classList.remove('icon-typing-in');
         splitIcon.classList.add('icon-typing-prep');
-        splitIcon.style.opacity = '';
-        splitIcon.style.visibility = '';
     }
 
-    if (unifiedWords[0]) unifiedWords[0].innerHTML = '';
-    if (unifiedWords[1]) unifiedWords[1].innerHTML = '';
+    if (unifiedWords[0]) {
+        unifiedWords[0].classList.remove('slogan-typing-in');
+        unifiedWords[0].classList.add('slogan-typing-prep');
+        unifiedWords[0].innerHTML = '';
+    }
+    if (unifiedWords[1]) {
+        unifiedWords[1].classList.remove('slogan-typing-in');
+        unifiedWords[1].classList.add('slogan-typing-prep');
+        unifiedWords[1].innerHTML = '';
+    }
     if (unifiedIcon) {
         unifiedIcon.classList.remove('icon-typing-in');
         unifiedIcon.classList.add('icon-typing-prep');
-        unifiedIcon.style.opacity = '';
-        unifiedIcon.style.visibility = '';
     }
 }
 
@@ -462,8 +574,17 @@ function finishHeroTypewriter() {
     // 3. Slogan Words & Icon
     const splitWords = document.querySelectorAll('.split-slogan-layout .slogan-word-icon');
     if (splitWords.length >= 2) {
+        splitWords[0].classList.remove('slogan-typing-prep', 'slogan-typing-in');
         splitWords[0].innerHTML = 'Together';
+        splitWords[0].style.opacity = '1';
+        splitWords[0].style.visibility = 'visible';
+        splitWords[0].style.transform = '';
+
+        splitWords[1].classList.remove('slogan-typing-prep', 'slogan-typing-in');
         splitWords[1].innerHTML = 'Forever';
+        splitWords[1].style.opacity = '1';
+        splitWords[1].style.visibility = 'visible';
+        splitWords[1].style.transform = '';
     }
     const splitIcon = document.querySelector('.split-slogan-layout .divider-icon');
     if (splitIcon) {
@@ -475,8 +596,17 @@ function finishHeroTypewriter() {
 
     const unifiedWords = document.querySelectorAll('.unified-slogan-layout .radium-word-icon');
     if (unifiedWords.length >= 2) {
+        unifiedWords[0].classList.remove('slogan-typing-prep', 'slogan-typing-in');
         unifiedWords[0].innerHTML = 'TOGETHER';
+        unifiedWords[0].style.opacity = '1';
+        unifiedWords[0].style.visibility = 'visible';
+        unifiedWords[0].style.transform = '';
+
+        unifiedWords[1].classList.remove('slogan-typing-prep', 'slogan-typing-in');
         unifiedWords[1].innerHTML = 'FOREVER';
+        unifiedWords[1].style.opacity = '1';
+        unifiedWords[1].style.visibility = 'visible';
+        unifiedWords[1].style.transform = '';
     }
     const unifiedIcon = document.querySelector('.unified-slogan-layout .divider-icon');
     if (unifiedIcon) {
@@ -520,22 +650,34 @@ function startHeroTypewriterSequence(forceRestart = false) {
     });
 
     // Initialize Slogan Words & Icons
-    if (splitWords[0]) splitWords[0].innerHTML = '';
-    if (splitWords[1]) splitWords[1].innerHTML = '';
+    if (splitWords[0]) {
+        splitWords[0].classList.remove('slogan-typing-in');
+        splitWords[0].classList.add('slogan-typing-prep');
+        splitWords[0].innerHTML = '';
+    }
+    if (splitWords[1]) {
+        splitWords[1].classList.remove('slogan-typing-in');
+        splitWords[1].classList.add('slogan-typing-prep');
+        splitWords[1].innerHTML = '';
+    }
     if (splitIcon) {
         splitIcon.classList.remove('icon-typing-in');
         splitIcon.classList.add('icon-typing-prep');
-        splitIcon.style.opacity = '';
-        splitIcon.style.visibility = '';
     }
 
-    if (unifiedWords[0]) unifiedWords[0].innerHTML = '';
-    if (unifiedWords[1]) unifiedWords[1].innerHTML = '';
+    if (unifiedWords[0]) {
+        unifiedWords[0].classList.remove('slogan-typing-in');
+        unifiedWords[0].classList.add('slogan-typing-prep');
+        unifiedWords[0].innerHTML = '';
+    }
+    if (unifiedWords[1]) {
+        unifiedWords[1].classList.remove('slogan-typing-in');
+        unifiedWords[1].classList.add('slogan-typing-prep');
+        unifiedWords[1].innerHTML = '';
+    }
     if (unifiedIcon) {
         unifiedIcon.classList.remove('icon-typing-in');
         unifiedIcon.classList.add('icon-typing-prep');
-        unifiedIcon.style.opacity = '';
-        unifiedIcon.style.visibility = '';
     }
 
     // Step 1: Type the title letter by letter
@@ -588,6 +730,19 @@ function startHeroTypewriterSequence(forceRestart = false) {
     let w1Idx = 0;
     function typeSloganTogether() {
         if (!isHeroTyping) return;
+        
+        // Reveal the "Together" box as typing starts
+        if (w1Idx === 0) {
+            if (splitWords[0]) {
+                splitWords[0].classList.remove('slogan-typing-prep');
+                splitWords[0].classList.add('slogan-typing-in');
+            }
+            if (unifiedWords[0]) {
+                unifiedWords[0].classList.remove('slogan-typing-prep');
+                unifiedWords[0].classList.add('slogan-typing-in');
+            }
+        }
+
         if (w1Idx < word1.length) {
             w1Idx++;
             const s1 = word1.substring(0, w1Idx);
@@ -630,6 +785,19 @@ function startHeroTypewriterSequence(forceRestart = false) {
     let w2Idx = 0;
     function typeSloganForever() {
         if (!isHeroTyping) return;
+
+        // Reveal the "Forever" box as typing starts
+        if (w2Idx === 0) {
+            if (splitWords[1]) {
+                splitWords[1].classList.remove('slogan-typing-prep');
+                splitWords[1].classList.add('slogan-typing-in');
+            }
+            if (unifiedWords[1]) {
+                unifiedWords[1].classList.remove('slogan-typing-prep');
+                unifiedWords[1].classList.add('slogan-typing-in');
+            }
+        }
+
         if (w2Idx < word2.length) {
             w2Idx++;
             const s2 = word2.substring(0, w2Idx);
@@ -682,7 +850,7 @@ function resumeThemeMotion() {
 
 // Landing Page Sliding Sidebar Navigation Drawer Functions
 function openLandingSidebar() {
-    // Switch to a new font from the 6 fonts every time user opens or returns to the About page
+    // Advance to the next font from the 7 fonts every time user opens or returns to the About page
     if (typeof initRandomAboutFont === 'function') {
         initRandomAboutFont();
     }
@@ -747,7 +915,7 @@ function showView(viewId) {
 
     const targetView = document.getElementById(viewId);
     if (targetView) {
-        if (viewId === "insta-view") { targetView.style.display = "flex"; } else { targetView.style.display = "block"; }
+        if (viewId === "insta-view" || viewId === "rapido-login-view") { targetView.style.display = "flex"; } else { targetView.style.display = "block"; }
         targetView.classList.add("active");
         window.scrollTo(0, 0);
     }
@@ -782,6 +950,131 @@ function openLinkedinClone() {
 function openInstagramClone() {
     if (checkAppLock()) return;
     showView("insta-view");
+}
+
+function openShankarView() {
+    if (checkAppLock()) return;
+    showView("shankar-view");
+}
+
+function openOPortal() {
+    openShankarView();
+}
+
+function openOrangeApp() {
+    openShankarView();
+}
+
+function openOApp() {
+    openShankarView();
+}
+
+async function handleRapidoLogin(event) {
+    event.preventDefault();
+    const admin = document.getElementById("rapidoAdminId").value.trim();
+    const password = document.getElementById("rapidoPass").value;
+    const errorBox = document.getElementById("rapidoAuthErrorAlert");
+    if (errorBox) errorBox.style.display = "none";
+
+    const adminLower = admin.toLowerCase();
+    const isStandardAdmin = (
+        (adminLower === "member@joininghands.org" || adminLower === "member" || adminLower === "admin" || adminLower === "admin@joininghands.org") && password === "demo1234"
+    ) || (
+        adminLower === "tejas" && password === "NewTejas99@"
+    );
+
+    if (isStandardAdmin) {
+        showToast("Login successful! Welcome Admin.");
+        returnToLanding();
+        return;
+    }
+
+    try {
+        const emailToAuth = admin.includes("@") ? admin : (admin + "@joininghands.org");
+        const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: emailToAuth, password: password })
+        });
+        const data = await res.json();
+        if (data.success) {
+            if (data.token) {
+                localStorage.setItem("pro_auth_token", data.token);
+            }
+            currentUser = data.user;
+            isProLoggedIn = true;
+            if (typeof updateUserProfileUI === "function") {
+                updateUserProfileUI(currentUser);
+            }
+            showToast(`Welcome back, ${currentUser.fullName}!`);
+            returnToLanding();
+            return;
+        } else {
+            if (errorBox) {
+                errorBox.textContent = data.error || "Invalid Admin ID or Password.";
+                errorBox.style.display = "block";
+            }
+        }
+    } catch (err) {
+        if (errorBox) {
+            errorBox.textContent = "Server connection error.";
+            errorBox.style.display = "block";
+        }
+    }
+}
+
+async function handleWhiteLogin(event) {
+    event.preventDefault();
+    const admin = document.getElementById("whiteAdminId").value.trim();
+    const password = document.getElementById("whitePass").value;
+    const errorBox = document.getElementById("whiteAuthErrorAlert");
+    if (errorBox) errorBox.style.display = "none";
+
+    const adminLower = admin.toLowerCase();
+    const isStandardAdmin = (
+        (adminLower === "member@joininghands.org" || adminLower === "member" || adminLower === "admin" || adminLower === "admin@joininghands.org") && password === "demo1234"
+    ) || (
+        adminLower === "tejas" && password === "NewTejas99@"
+    );
+
+    if (isStandardAdmin) {
+        showToast("Login successful! Welcome Admin.");
+        returnToLanding();
+        return;
+    }
+
+    try {
+        const emailToAuth = admin.includes("@") ? admin : (admin + "@joininghands.org");
+        const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: emailToAuth, password: password })
+        });
+        const data = await res.json();
+        if (data.success) {
+            if (data.token) {
+                localStorage.setItem("pro_auth_token", data.token);
+            }
+            currentUser = data.user;
+            isProLoggedIn = true;
+            if (typeof updateUserProfileUI === "function") {
+                updateUserProfileUI(currentUser);
+            }
+            showToast(`Welcome back, ${currentUser.fullName}!`);
+            returnToLanding();
+            return;
+        } else {
+            if (errorBox) {
+                errorBox.textContent = data.error || "Invalid Admin ID or Password.";
+                errorBox.style.display = "block";
+            }
+        }
+    } catch (err) {
+        if (errorBox) {
+            errorBox.textContent = "Server connection error.";
+            errorBox.style.display = "block";
+        }
+    }
 }
 
 function showProStage(stageId) {
@@ -3789,34 +4082,36 @@ function playSingleBeep(freq, gainVal, duration) {
 }
 
 // Show view controller trigger
-async function openRapidoClone() {
+function openRapidoClone() {
     if (checkAppLock()) return;
+    showView("rapido-login-view");
+}
 
+async function launchRapidoApp() {
+    if (checkAppLock()) return;
     const token = localStorage.getItem("pro_auth_token");
-    if (!token) {
-        intendedApp = "rapido";
-        showView("pro-network-view");
-        showProStage("pro-login-stage");
-        return;
-    }
-
     intendedApp = "rapido";
     showView("rapido-view");
 
     // Cache the user full name from API profile on boot
     try {
-        const res = await fetch("/api/profile/full", {
-            headers: { "Authorization": `Bearer ${token}` }
-        });
-        const data = await res.json();
-        if (data.success && data.profile) {
-            localStorage.setItem("pro_auth_user_name", data.profile.fullName || data.profile.email);
+        if (token) {
+            const res = await fetch("/api/profile/full", {
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+            const data = await res.json();
+            if (data.success && data.profile) {
+                localStorage.setItem("pro_auth_user_name", data.profile.fullName || data.profile.email);
+            }
         }
     } catch (e) { }
 
-    document.getElementById("rapido-rider-body").style.display = "flex";
-    document.getElementById("rapido-captain-body").style.display = "none";
-    document.getElementById("rapido-mode-toggle").innerHTML = `<i class="fa-solid fa-motorcycle"></i> <span>Switch to Captain Mode</span>`;
+    const riderBody = document.getElementById("rapido-rider-body");
+    const captainBody = document.getElementById("rapido-captain-body");
+    const modeToggle = document.getElementById("rapido-mode-toggle");
+    if (riderBody) riderBody.style.display = "flex";
+    if (captainBody) captainBody.style.display = "none";
+    if (modeToggle) modeToggle.innerHTML = `<i class="fa-solid fa-motorcycle"></i> <span>Switch to Captain Mode</span>`;
     rapidoRole = "RIDER";
 
     resetRiderBookingView();
@@ -5805,6 +6100,9 @@ function toggleSettingsPanel(event) {
     const panel = document.getElementById("settingsPopoverPanel");
     if (panel) {
         panel.classList.toggle("active");
+        if (panel.classList.contains("active")) {
+            closeApiPanel();
+        }
     }
 }
 
@@ -5815,13 +6113,40 @@ function closeSettingsPanel() {
     }
 }
 
-// Auto-close popover when clicking outside
-document.addEventListener("click", (e) => {
-    const panel = document.getElementById("settingsPopoverPanel");
-    const btn = document.getElementById("settingsFloatingBtn");
-    if (panel && panel.classList.contains("active")) {
-        if (!panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+// Downside API Panel Handlers (Bottom Left)
+function toggleApiPanel(event) {
+    if (event) event.stopPropagation();
+    const panel = document.getElementById("apiPopoverPanel");
+    if (panel) {
+        panel.classList.toggle("active");
+        if (panel.classList.contains("active")) {
             closeSettingsPanel();
+        }
+    }
+}
+
+function closeApiPanel() {
+    const panel = document.getElementById("apiPopoverPanel");
+    if (panel) {
+        panel.classList.remove("active");
+    }
+}
+
+// Auto-close popovers when clicking outside
+document.addEventListener("click", (e) => {
+    const settingsPanel = document.getElementById("settingsPopoverPanel");
+    const settingsBtn = document.getElementById("settingsFloatingBtn");
+    if (settingsPanel && settingsPanel.classList.contains("active")) {
+        if (!settingsPanel.contains(e.target) && e.target !== settingsBtn && !settingsBtn.contains(e.target)) {
+            closeSettingsPanel();
+        }
+    }
+
+    const apiPanel = document.getElementById("apiPopoverPanel");
+    const apiBtn = document.getElementById("apiFloatingBtn");
+    if (apiPanel && apiPanel.classList.contains("active")) {
+        if (!apiPanel.contains(e.target) && e.target !== apiBtn && !apiBtn.contains(e.target)) {
+            closeApiPanel();
         }
     }
 });

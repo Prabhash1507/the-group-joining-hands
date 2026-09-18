@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@400;500;700&family=Inter:wght@400;600&family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@400;600;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
 /* ==========================================
    THE GROUP OF JOINING HANDS - STYLESHEET
    ========================================== */
@@ -1119,19 +1121,20 @@ body {
 }
 
 /* ==========================================================================
-   "THE GROUP OF JOINING HANDS" TITLE (CLEAN NO-CONTAINER HERO & DYNAMIC THEMES)
+   "THE GROUP OF JOINING HANDS" TITLE (3D SCULPTED & HIGH-IMPACT HERO TITLE)
    ========================================================================== */
 .title-single-box {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    font-family: var(--font-heading);
-    font-size: clamp(2.35rem, 4.35vw, 3.85rem);
-    font-weight: 800;
+    font-family: 'Poppins', 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(2.6rem, 4.7vw, 4.4rem);
+    font-weight: 900;
     color: #ffffff;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.035em;
     text-align: center;
+    line-height: 1.15;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -1141,14 +1144,34 @@ body {
     box-shadow: none !important;
     transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease !important;
     animation: gentleFloat 5s ease-in-out infinite alternate;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 255, 255, 0.25);
-    max-width: 95vw;
+    text-shadow:
+        0 1px 0 #cbd5e1,
+        0 2px 0 #94a3b8,
+        0 3px 0 #64748b,
+        0 4px 0 #475569,
+        0 5px 0 #334155,
+        0 6px 1px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(124, 58, 237, 0.3),
+        0 10px 25px rgba(0, 0, 0, 0.45),
+        0 20px 40px rgba(0, 0, 0, 0.35);
+    max-width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
 }
 
 .title-single-box:hover {
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
+    text-shadow:
+        0 1px 0 #e2e8f0,
+        0 2px 0 #cbd5e1,
+        0 3px 0 #94a3b8,
+        0 4px 0 #64748b,
+        0 5px 0 #475569,
+        0 6px 0 #334155,
+        0 7px 1px rgba(0, 0, 0, 0.4),
+        0 0 24px rgba(124, 58, 237, 0.5),
+        0 14px 32px rgba(0, 0, 0, 0.55),
+        0 24px 48px rgba(0, 0, 0, 0.4);
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -1167,17 +1190,37 @@ body {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 16px rgba(99, 102, 241, 0.25) !important;
+    text-shadow:
+        0 1px 0 #4338ca,
+        0 2px 0 #3730a3,
+        0 3px 0 #312e81,
+        0 4px 0 #1e1b4b,
+        0 5px 1px rgba(0, 0, 0, 0.25),
+        0 0 14px rgba(124, 58, 237, 0.25),
+        0 8px 20px rgba(15, 23, 42, 0.25),
+        0 16px 36px rgba(15, 23, 42, 0.18) !important;
+}
+
+@media (max-width: 1024px) {
+    .title-single-box {
+        font-size: clamp(2.05rem, 4.1vw, 3.25rem);
+    }
 }
 
 @media (max-width: 768px) {
     .title-single-box {
         padding: 4px 10px;
-        font-size: clamp(1.35rem, 5vw, 1.85rem);
+        font-size: clamp(1.45rem, 5.5vw, 2.2rem);
+        white-space: normal;
         border-radius: 0;
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
+        text-shadow:
+            0 1px 0 #94a3b8,
+            0 2px 0 #475569,
+            0 3px 1px rgba(0, 0, 0, 0.3),
+            0 6px 14px rgba(0, 0, 0, 0.4);
     }
 }
 
@@ -1355,8 +1398,15 @@ body {
     text-align: center;
     position: relative;
     z-index: 10;
-    margin-bottom: 48px;
-    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-top: 24px;
+    width: 100%;
+    max-width: calc(100vw - 260px);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
         opacity 0.8s ease,
         filter 0.8s ease;
@@ -1889,6 +1939,20 @@ body {
     pointer-events: none;
 }
 
+/* 3D Tile Image Symbol (Bharat Mata & Custom Logos) */
+.tile-symbol-img {
+    height: 70px;
+    width: auto;
+    max-width: 60px;
+    max-height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
+    transform: translateZ(6px);
+    pointer-events: none;
+    user-select: none;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 /* ==========================================================================
    COLOR SPECIFIC 3D TILE THEMES (D, H, I, P, E)
    ========================================================================== */
@@ -2049,6 +2113,11 @@ body {
     transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.ecosystem-tile:hover .tile-symbol-img {
+    transform: translateZ(12px) scale(1.1);
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .ecosystem-tile:hover .tile-letter {
     transform: translateZ(12px) scale(1.08) rotate(-6deg);
     transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -2151,6 +2220,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 8px 24px;
+    font-weight: 700;
     background: rgba(0, 0, 0, 0.4);
     /* Darker glass for high contrast */
     backdrop-filter: blur(12px);
@@ -2177,7 +2247,7 @@ body {
     padding: 12px 28px;
     font-family: var(--font-heading);
     font-size: 3.0rem;
-    font-weight: 700;
+    font-weight: 800;
     background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -2206,7 +2276,7 @@ body {
     font-family: var(--font-heading);
     font-size: 1.15rem;
     /* Significantly smaller */
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 2px;
     /* Smaller letter-spacing for Title Case */
     text-transform: capitalize;
@@ -2225,6 +2295,7 @@ body {
 .split-slogan-layout .divider-slogan,
 .radium-slogan-layout .divider-slogan {
     letter-spacing: 6px;
+    font-weight: 700;
     filter: none;
     color: inherit;
     transition: color 0.5s ease, text-shadow 0.5s ease;
@@ -4769,6 +4840,16 @@ body.dark-theme .comment-bubble {
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
+}
+
+#shankar-view {
+    background-color: #f8fafc !important;
+    background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px) !important;
+    background-size: 24px 24px !important;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .insta-container {
@@ -8048,6 +8129,149 @@ input:checked+.slider:before {
 }
 
 /* ==========================================================================
+   FLOATING API BUTTON & POPOVER PANEL (BOTTOM LEFT)
+   ========================================================================== */
+
+.landing-api-container {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 2000;
+}
+
+.api-popover-panel {
+    position: absolute;
+    bottom: 116px;
+    left: 0;
+    width: 320px;
+    max-height: 480px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px) scale(0.95);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: bottom left;
+    display: flex;
+    flex-direction: column;
+}
+
+.api-popover-panel.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0) scale(1);
+}
+
+.api-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+.api-panel-header h4 {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+    margin: 0;
+}
+
+.api-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.api-close-btn:hover {
+    color: #ef4444;
+}
+
+.api-panel-body {
+    overflow-y: auto;
+    max-height: 360px;
+    padding-right: 4px;
+}
+
+.api-badge-cat {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.api-endpoint-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    background: rgba(241, 245, 249, 0.85);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    margin-bottom: 4px;
+    color: #1e293b;
+    transition: background 0.15s ease;
+}
+
+.api-endpoint-row:hover {
+    background: #ffffff;
+    border-color: rgba(124, 58, 237, 0.25);
+}
+
+.api-method {
+    font-weight: 800;
+    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.api-method.get {
+    background: #10b981;
+}
+
+.api-method.post {
+    background: #3b82f6;
+}
+
+.api-path {
+    word-break: break-all;
+}
+
+.api-tile-text {
+    font-family: 'Calibri', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    transform: translateZ(6px);
+    pointer-events: none;
+    transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ==========================================================================
    FLOATING SETTINGS BUTTON & POPOVER PANEL (DOWNSIDE)
    ========================================================================== */
 
@@ -8552,7 +8776,8 @@ input:checked+.slider:before {
     /* Shrink the inner 3D elements of the floating triggers */
     .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-raised,
     .vertical-ai-trigger.ecosystem-tile--ai .tile-3d-raised,
-    .landing-settings-container .ecosystem-tile--menu .tile-3d-raised {
+    .landing-settings-container .ecosystem-tile--menu .tile-3d-raised,
+    .landing-api-container .ecosystem-tile--menu .tile-3d-raised {
         width: 40px !important;
         height: 40px !important;
         transform: translateZ(6px) !important;
@@ -8560,12 +8785,14 @@ input:checked+.slider:before {
 
     .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-circle,
     .vertical-ai-trigger.ecosystem-tile--ai .tile-3d-circle,
-    .landing-settings-container .ecosystem-tile--menu .tile-3d-circle {
+    .landing-settings-container .ecosystem-tile--menu .tile-3d-circle,
+    .landing-api-container .ecosystem-tile--menu .tile-3d-circle {
         width: 32px !important;
         height: 32px !important;
     }
 
-    .menu-tile-text {
+    .menu-tile-text,
+    .api-tile-text {
         font-size: 0.45rem !important;
     }
 
@@ -8574,20 +8801,34 @@ input:checked+.slider:before {
         padding: 0 !important;
     }
 
-    /* 2. Settings Floating Button (Bottom Right) */
+    /* 2. Settings Floating Button (Bottom Right) & API Floating Button (Bottom Left) */
     .landing-settings-container {
         bottom: 24px !important;
         right: 16px !important;
     }
 
-    .landing-settings-container .ecosystem-tile--menu {
+    .landing-api-container {
+        bottom: 24px !important;
+        left: 16px !important;
+    }
+
+    .landing-settings-container .ecosystem-tile--menu,
+    .landing-api-container .ecosystem-tile--menu {
         width: 65px !important;
         height: 65px !important;
     }
 
-    /* Fix Settings Popover escaping the screen */
+    /* Fix Settings and API Popovers escaping the screen */
     .settings-popover-panel {
         right: 0 !important;
+        width: 85vw !important;
+        max-width: 290px !important;
+        bottom: 80px !important;
+        padding: 14px !important;
+    }
+
+    .api-popover-panel {
+        left: 0 !important;
         width: 85vw !important;
         max-width: 290px !important;
         bottom: 80px !important;
@@ -8978,22 +9219,50 @@ input:checked+.slider:before {
     width: 100% !important;
 }
 
+/* Apply About content font to everything inside the menu */
+#landing-view.menu-active,
+#landing-view.menu-active .about-overlay-title,
+#landing-view.menu-active .about-overlay-text,
+#landing-view.menu-active .about-overlay-text *,
+#landing-view.menu-active .hero-main-title,
+#landing-view.menu-active .title-single-box,
+#landing-view.menu-active .ecosystem-divider,
+#landing-view.menu-active .divider-slogan,
+#landing-view.menu-active .slogan-word-icon,
+#landing-view.menu-active .radium-word-icon,
+#landing-view.menu-active .menu-tile-text,
+#landing-view.menu-active .ai-tile-text,
+#landing-view.menu-active .settings-tile-text,
+#landing-view.menu-active .api-tile-text,
+#landing-view.menu-active .tile-letter {
+    font-family: var(--about-font-family, var(--font-body)) !important;
+}
+
 #landing-view.menu-active .divider-slogan,
 #landing-view.menu-active .slogan-word-icon,
 #landing-view.menu-active .radium-word-icon {
     font-size: clamp(1.45rem, 2.2vw, 1.95rem) !important;
+    font-weight: 700 !important;
     padding: 12px 30px !important;
     border-radius: 20px !important;
     letter-spacing: 2px !important;
+    text-align: center !important;
+}
+
+#landing-view.menu-active .divider-slogan:not(.slogan-typing-prep),
+#landing-view.menu-active .slogan-word-icon:not(.slogan-typing-prep),
+#landing-view.menu-active .radium-word-icon:not(.slogan-typing-prep) {
     opacity: 1 !important;
     visibility: visible !important;
-    text-align: center !important;
 }
 
 #landing-view.menu-active .divider-icon {
     width: clamp(54px, 6.4vw, 72px) !important;
     height: clamp(54px, 6.4vw, 72px) !important;
     font-size: clamp(1.4rem, 1.9vw, 1.95rem) !important;
+}
+
+#landing-view.menu-active .divider-icon:not(.icon-typing-prep) {
     opacity: 1 !important;
     visibility: visible !important;
 }
@@ -9030,14 +9299,14 @@ input:checked+.slider:before {
 
 .about-overlay-title {
     color: #ffffff;
-    font-size: calc(clamp(2rem, 3.5vw, 2.75rem) * var(--about-title-scale, 1)) !important;
-    font-family: var(--about-font-family, var(--font-heading)) !important;
+    font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
+    font-family: var(--about-font-family, var(--font-heading, 'Calibri', sans-serif)) !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
     line-height: 1.08 !important;
     margin-bottom: 12px !important;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.5px !important;
     font-weight: 800;
     text-align: left !important;
 }
@@ -9046,9 +9315,10 @@ input:checked+.slider:before {
     font-family: var(--about-font-family, var(--font-body)) !important;
     color: rgba(255, 255, 255, 0.98) !important;
     font-size: calc(clamp(1.18rem, 1.65vw, 1.42rem) * var(--about-font-scale, 1)) !important;
-    line-height: 1.68 !important;
+    line-height: var(--about-line-height, 1.68) !important;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-    font-weight: 500;
+    font-weight: var(--about-font-weight, 500) !important;
+    letter-spacing: var(--about-letter-spacing, normal) !important;
     text-align: left !important;
     margin: 0 !important;
 }
@@ -9056,7 +9326,9 @@ input:checked+.slider:before {
 .about-overlay-text p {
     font-family: var(--about-font-family, var(--font-body)) !important;
     font-size: calc(clamp(1.18rem, 1.65vw, 1.42rem) * var(--about-font-scale, 1)) !important;
-    line-height: 1.68 !important;
+    line-height: var(--about-line-height, 1.68) !important;
+    font-weight: var(--about-font-weight, 500) !important;
+    letter-spacing: var(--about-letter-spacing, normal) !important;
     margin-bottom: 12px !important;
     text-align: left !important;
 }
@@ -9227,6 +9499,7 @@ input:checked+.slider:before {
     color: #1e1b4b !important;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 16px rgba(99, 102, 241, 0.25) !important;
 }
+
 #landing-view.theme-water .divider-icon {
     color: #4338ca !important;
     border-color: rgba(99, 102, 241, 0.45) !important;
@@ -9245,6 +9518,7 @@ input:checked+.slider:before {
     color: #fde047 !important;
     text-shadow: 0 2px 14px rgba(245, 158, 11, 0.75), 0 0 24px rgba(253, 224, 71, 0.45) !important;
 }
+
 #landing-view.theme-flow .divider-icon {
     color: #fbbf24 !important;
     border-color: rgba(245, 158, 11, 0.55) !important;
@@ -9263,6 +9537,7 @@ input:checked+.slider:before {
     color: #e9d5ff !important;
     text-shadow: 0 2px 14px rgba(168, 85, 247, 0.75), 0 0 24px rgba(216, 180, 254, 0.45) !important;
 }
+
 #landing-view.theme-glassflow .divider-icon {
     color: #c084fc !important;
     border-color: rgba(168, 85, 247, 0.55) !important;
@@ -9281,6 +9556,7 @@ input:checked+.slider:before {
     color: #38bdf8 !important;
     text-shadow: 0 2px 14px rgba(56, 189, 248, 0.75), 0 0 24px rgba(52, 211, 153, 0.45) !important;
 }
+
 #landing-view.theme-waterflow .divider-icon {
     color: #38bdf8 !important;
     border-color: rgba(56, 189, 248, 0.55) !important;
@@ -9299,6 +9575,7 @@ input:checked+.slider:before {
     color: #fdba74 !important;
     text-shadow: 0 2px 14px rgba(249, 115, 22, 0.75) !important;
 }
+
 #landing-view.theme-6th .divider-icon {
     color: #fb923c !important;
     border-color: rgba(249, 115, 22, 0.55) !important;
@@ -9322,6 +9599,7 @@ input:checked+.slider:before {
     color: #f472b6 !important;
     text-shadow: 0 2px 14px rgba(236, 72, 153, 0.75), 0 0 24px rgba(129, 140, 248, 0.45) !important;
 }
+
 #landing-view.theme-7th .divider-icon,
 #landing-view.theme-cosmic .divider-icon {
     color: #f472b6 !important;
@@ -9367,6 +9645,7 @@ input:checked+.slider:before {
     color: #7dd3fc !important;
     text-shadow: 0 2px 14px rgba(56, 189, 248, 0.75), 0 0 24px rgba(59, 130, 246, 0.45) !important;
 }
+
 #landing-view.theme-8th .divider-icon,
 #landing-view.theme-air .divider-icon,
 #landing-view.theme-10th .divider-icon,
@@ -9393,6 +9672,7 @@ input:checked+.slider:before {
     color: #6ee7b7 !important;
     text-shadow: 0 2px 14px rgba(52, 211, 153, 0.75) !important;
 }
+
 #landing-view.theme-theme1 .divider-icon,
 #landing-view.theme-aurora .divider-icon {
     color: #34d399 !important;
@@ -9416,6 +9696,7 @@ input:checked+.slider:before {
     color: #f0abfc !important;
     text-shadow: 0 2px 14px rgba(232, 121, 249, 0.75) !important;
 }
+
 #landing-view.theme-theme2 .divider-icon,
 #landing-view.theme-nebula .divider-icon {
     color: #e879f9 !important;
@@ -9439,6 +9720,7 @@ input:checked+.slider:before {
     color: #67e8f9 !important;
     text-shadow: 0 2px 14px rgba(34, 211, 238, 0.75) !important;
 }
+
 #landing-view.theme-theme3 .divider-icon,
 #landing-view.theme-prism .divider-icon {
     color: #22d3ee !important;
@@ -9462,6 +9744,7 @@ input:checked+.slider:before {
     color: #93c5fd !important;
     text-shadow: 0 2px 14px rgba(96, 165, 250, 0.75) !important;
 }
+
 #landing-view.theme-theme4 .divider-icon,
 #landing-view.theme-vortex .divider-icon {
     color: #60a5fa !important;
@@ -9485,6 +9768,7 @@ input:checked+.slider:before {
     color: #fde047 !important;
     text-shadow: 0 2px 14px rgba(245, 158, 11, 0.75) !important;
 }
+
 #landing-view.theme-theme5 .divider-icon,
 #landing-view.theme-eclipse .divider-icon {
     color: #f59e0b !important;
@@ -9508,6 +9792,7 @@ input:checked+.slider:before {
     color: #5eead4 !important;
     text-shadow: 0 2px 14px rgba(45, 212, 191, 0.75) !important;
 }
+
 #landing-view.theme-theme6 .divider-icon,
 #landing-view.theme-zenith .divider-icon {
     color: #2dd4bf !important;
@@ -9531,6 +9816,7 @@ input:checked+.slider:before {
     color: #fda4af !important;
     text-shadow: 0 2px 14px rgba(251, 113, 133, 0.75) !important;
 }
+
 #landing-view.theme-theme7 .divider-icon,
 #landing-view.theme-mirage .divider-icon {
     color: #fb7185 !important;
@@ -9554,6 +9840,7 @@ input:checked+.slider:before {
     color: #fef08a !important;
     text-shadow: 0 2px 14px rgba(250, 204, 21, 0.75) !important;
 }
+
 #landing-view.theme-theme8 .divider-icon,
 #landing-view.theme-radiance .divider-icon {
     color: #facc15 !important;
@@ -9577,6 +9864,7 @@ input:checked+.slider:before {
     color: #7dd3fc !important;
     text-shadow: 0 2px 14px rgba(56, 189, 248, 0.75) !important;
 }
+
 #landing-view.theme-theme9 .divider-icon,
 #landing-view.theme-solstice .divider-icon {
     color: #38bdf8 !important;
@@ -9600,6 +9888,7 @@ input:checked+.slider:before {
     color: #c7d2fe !important;
     text-shadow: 0 2px 14px rgba(129, 140, 248, 0.75) !important;
 }
+
 #landing-view.theme-theme10 .divider-icon,
 #landing-view.theme-horizon .divider-icon {
     color: #818cf8 !important;
@@ -9623,6 +9912,7 @@ input:checked+.slider:before {
     color: #86efac !important;
     text-shadow: 0 2px 14px rgba(74, 222, 128, 0.75) !important;
 }
+
 #landing-view.theme-theme11 .divider-icon,
 #landing-view.theme-flux .divider-icon {
     color: #4ade80 !important;
@@ -9646,6 +9936,7 @@ input:checked+.slider:before {
     color: #93c5fd !important;
     text-shadow: 0 2px 14px rgba(96, 165, 250, 0.75) !important;
 }
+
 #landing-view.theme-theme12 .divider-icon,
 #landing-view.theme-cascade .divider-icon {
     color: #60a5fa !important;
@@ -9669,6 +9960,7 @@ input:checked+.slider:before {
     color: #f472b6 !important;
     text-shadow: 0 2px 14px rgba(244, 114, 182, 0.75) !important;
 }
+
 #landing-view.theme-theme13 .divider-icon,
 #landing-view.theme-astral .divider-icon {
     color: #f472b6 !important;
@@ -9692,6 +9984,7 @@ input:checked+.slider:before {
     color: #fde047 !important;
     text-shadow: 0 2px 14px rgba(251, 191, 36, 0.75) !important;
 }
+
 #landing-view.theme-theme14 .divider-icon,
 #landing-view.theme-lumina .divider-icon {
     color: #fbbf24 !important;
@@ -9723,6 +10016,7 @@ input:checked+.slider:before {
     color: #fde047 !important;
     text-shadow: 0 2px 14px rgba(253, 224, 71, 0.75) !important;
 }
+
 #landing-view.theme-theme15 .divider-icon,
 #landing-view.theme-oasis .divider-icon,
 #landing-view.theme-pic1 .divider-icon {
@@ -9754,6 +10048,7 @@ input:checked+.slider:before {
     color: #bae6fd !important;
     text-shadow: 0 2px 14px rgba(125, 211, 252, 0.75) !important;
 }
+
 #landing-view.theme-theme16 .divider-icon,
 #landing-view.theme-summit .divider-icon,
 #landing-view.theme-pic2 .divider-icon {
@@ -9785,6 +10080,7 @@ input:checked+.slider:before {
     color: #bbf7d0 !important;
     text-shadow: 0 2px 14px rgba(134, 239, 172, 0.75) !important;
 }
+
 #landing-view.theme-theme17 .divider-icon,
 #landing-view.theme-haven .divider-icon,
 #landing-view.theme-pic3 .divider-icon {
@@ -9816,6 +10112,7 @@ input:checked+.slider:before {
     color: #e9d5ff !important;
     text-shadow: 0 2px 14px rgba(216, 180, 254, 0.75) !important;
 }
+
 #landing-view.theme-theme19 .divider-icon,
 #landing-view.theme-elysium .divider-icon,
 #landing-view.theme-pic5 .divider-icon {
@@ -9847,6 +10144,7 @@ input:checked+.slider:before {
     color: #a7f3d0 !important;
     text-shadow: 0 2px 14px rgba(110, 231, 183, 0.75) !important;
 }
+
 #landing-view.theme-theme20 .divider-icon,
 #landing-view.theme-solitude .divider-icon,
 #landing-view.theme-pic6 .divider-icon {
@@ -10283,16 +10581,31 @@ input:checked+.slider:before {
     box-shadow: 0 0 10px currentColor;
 }
 
-/* Ensure slogan words remain visible for typewriter text engine */
-.split-slogan-layout .divider-slogan,
-.radium-slogan-layout .divider-slogan,
-.unified-slogan-layout .radium-word-icon {
+/* Slogan Words and Divider Elements Visibility */
+.split-slogan-layout .divider-slogan:not(.slogan-typing-prep),
+.radium-slogan-layout .divider-slogan:not(.slogan-typing-prep),
+.unified-slogan-layout .radium-word-icon:not(.slogan-typing-prep),
+.slogan-word-icon:not(.slogan-typing-prep) {
     opacity: 1 !important;
     animation: none !important;
 }
 
-.slogan-word-icon {
+/* Slogan Typing Prep & In States */
+.slogan-typing-prep,
+#landing-view.menu-active .slogan-typing-prep {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-12px) scale(0.7) !important;
+    transition: none !important;
+    pointer-events: none !important;
+}
+
+.slogan-typing-in,
+#landing-view.menu-active .slogan-typing-in {
     opacity: 1 !important;
+    visibility: visible !important;
+    animation: tileTypewriterStrike 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+    pointer-events: auto !important;
 }
 
 /* Ecosystem Tiles Typewriter Keystroke Effect */
@@ -10328,12 +10641,18 @@ input:checked+.slider:before {
 }
 
 /* Handshake Icon Typewriter Keystroke */
-.divider-icon.icon-typing-prep {
+.divider-icon.icon-typing-prep,
+#landing-view.menu-active .divider-icon.icon-typing-prep {
     opacity: 0 !important;
+    visibility: hidden !important;
     transform: scale(0.4) !important;
     transition: none !important;
+    pointer-events: none !important;
 }
 
-.divider-icon.icon-typing-in {
+.divider-icon.icon-typing-in,
+#landing-view.menu-active .divider-icon.icon-typing-in {
+    opacity: 1 !important;
+    visibility: visible !important;
     animation: tileTypewriterStrike 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
-}
+}

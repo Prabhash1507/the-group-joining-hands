@@ -9,11 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Lato:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@400;500;700&family=Inter:wght@400;600&family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@400;600;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=69">
+    <link rel="stylesheet" href="styles.css?v=82">
     <!-- Google Identity Services SDK -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -297,7 +297,7 @@
                 <div class="tile-3d-body">
                     <div class="tile-3d-raised">
                         <div class="tile-3d-circle">
-                            <span class="ai-tile-text">Natural<br>Intelligent<br>Machine</span>
+                            <span class="ai-tile-text">NATURAL<br>INTELLIGENT<br>MACHINE</span>
                         </div>
                     </div>
                 </div>
@@ -375,13 +375,15 @@
                             </div>
                         </div>
 
-                        <!-- 3. I TILE (Red with White I) -->
+                        <!-- 3. I TILE (Red with Bharat Mata) -->
                         <div class="ecosystem-tile ecosystem-tile--i" role="button" tabindex="0" onclick="openRedApp()"
                             onkeydown="if(event.key==='Enter'||event.key===' ')openRedApp()" aria-label="India App">
                             <div class="tile-3d-body">
                                 <div class="tile-3d-raised">
                                     <div class="tile-3d-circle">
-                                        <span class="tile-letter">I</span>
+                                        <img src="/static/images/bharatmata_bg.png"
+                                            onerror="if(this.src.indexOf('bharatamata')===-1)this.src='/static/images/bharatamata_bg.png';"
+                                            alt="Bharat Mata" class="tile-symbol-img">
                                     </div>
                                 </div>
                             </div>
@@ -415,13 +417,15 @@
                             </div>
                         </div>
 
-                        <!-- 6. O TILE (Bright Electric Orange with White O) -->
+                        <!-- 6. O TILE (White with Shankar Nag) -->
                         <div class="ecosystem-tile ecosystem-tile--o" role="button" tabindex="0"
-                            aria-label="O Portal - Orange Initiative">
+                            onclick="openShankarView()"
+                            onkeydown="if(event.key==='Enter'||event.key===' ')openShankarView()"
+                            aria-label="GramConnect - Shankar Nag">
                             <div class="tile-3d-body">
                                 <div class="tile-3d-raised">
                                     <div class="tile-3d-circle">
-                                        <span class="tile-letter">O</span>
+                                        <img src="/static/images/shankar.png" alt="Shankar Nag" class="tile-symbol-img">
                                     </div>
                                 </div>
                             </div>
@@ -462,6 +466,63 @@
                 <p>&copy; 2026 The Group of Joining Hands. All rights reserved.</p>
             </div>
         </footer>
+        <!-- Floating API Button and REST Endpoints Popover (Bottom Left) -->
+        <div class="landing-api-container">
+            <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="apiFloatingBtn"
+                onclick="toggleApiPanel(event)" role="button" tabindex="0" aria-label="Explore System REST APIs"
+                title="API Documentation & System Endpoints"
+                style="position: relative; top: auto; left: auto; right: auto; margin: 0; transform: none; animation: none;">
+                <div class="tile-3d-body">
+                    <div class="tile-3d-raised">
+                        <div class="tile-3d-circle">
+                            <span class="menu-tile-text api-tile-text">API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-popover-panel" id="apiPopoverPanel" onclick="event.stopPropagation()">
+                <div class="api-panel-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-code" style="color: #7c3aed; font-size: 14px;"></i>
+                        <h4>System REST APIs</h4>
+                    </div>
+                    <button class="api-close-btn" onclick="closeApiPanel()" aria-label="Close API Panel">&times;</button>
+                </div>
+                <div class="api-panel-body">
+                    <div class="api-section-group">
+                        <span class="api-badge-cat">Core & Auth</span>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/auth/login</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/auth/register</span></div>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/auth/verify-token</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/auth/logout</span></div>
+                    </div>
+                    <div class="api-section-group" style="margin-top: 10px;">
+                        <span class="api-badge-cat">Social & Network</span>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/posts</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/posts</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/posts/like</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/posts/comment</span></div>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/messages/conversations</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/messages/send</span></div>
+                    </div>
+                    <div class="api-section-group" style="margin-top: 10px;">
+                        <span class="api-badge-cat">Transit & Mobility</span>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/rapido/rides</span></div>
+                        <div class="api-endpoint-row"><span class="api-method post">POST</span><span class="api-path">/api/rapido/request</span></div>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/rapido/driver/stats</span></div>
+                    </div>
+                    <div class="api-section-group" style="margin-top: 10px;">
+                        <span class="api-badge-cat">Admin & Telemetry</span>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/admin/overview</span></div>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/admin/health</span></div>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/admin/users</span></div>
+                        <div class="api-endpoint-row"><span class="api-method get">GET</span><span class="api-path">/api/admin/database/backup</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Floating Settings Button and Backdrop Theme Popover (Downside) -->
         <div class="landing-settings-container">
             <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="settingsFloatingBtn"
@@ -1309,6 +1370,124 @@
                 </div>
 
                 <button type="submit" style="background-color: #10b981; color: white;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SHANKAR NAG VIEW (WHITE ICON) -->
+    <div id="shankar-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <!-- LEFT: Joining Hands Logo ONLY -->
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+            </div>
+            <!-- RIGHT: Home -->
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div>
+        </div>
+
+        <div class="pro-login-card admin-login-corner-card"
+            style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
+            <h2>
+                <i class="fa-solid fa-shield-halved" style="color: #475569; font-size: 13px;"></i> Admin Login
+            </h2>
+            <div id="whiteAuthErrorAlert" class="auth-error-banner"
+                style="display:none; margin-bottom: 8px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 6px 8px; border-radius: 6px; border: 1px solid #fecaca;"></div>
+
+            <form id="whiteLoginForm" action="#" method="POST" onsubmit="handleWhiteLogin(event)"
+                style="text-align: left;">
+                <div class="input-group">
+                    <label for="whiteAdminId">Admin ID</label>
+                    <input type="text" id="whiteAdminId" required placeholder="Enter Admin ID">
+                </div>
+                <div class="input-group">
+                    <label for="whitePass">Password</label>
+                    <input type="password" id="whitePass" required placeholder="Enter password">
+                </div>
+
+                <button type="submit" style="background-color: #1e293b; color: white;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PURPLE APP VIEW (RIDE / SWASTIK PORTAL LOGIN SCREEN) -->
+    <div id="rapido-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <!-- Top Universal Header -->
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <!-- LEFT: Joining Hands Logo ONLY -->
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+            </div>
+            <!-- RIGHT: Home -->
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div>
+        </div>
+
+        <!-- Center: Purple Swastika Icon on Pure White Background -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
+            <div class="purple-swastik-portal-icon-wrap" style="display: flex; align-items: center; justify-content: center;">
+                <svg class="portal-swastik-svg" viewBox="0 0 100 100" fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="width: clamp(280px, 36vw, 480px); height: clamp(280px, 36vw, 480px); filter: drop-shadow(0 18px 45px rgba(124, 58, 237, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
+                    <!-- Upright, symmetrical traditional Indian Swastik -->
+                    <g stroke="#7c3aed" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Center cross -->
+                        <path d="M 50 14 L 50 86" />
+                        <path d="M 14 50 L 86 50" />
+                        <!-- 4 Traditional Right-bent Arms -->
+                        <path d="M 50 14 L 84 14" />
+                        <path d="M 86 50 L 86 84" />
+                        <path d="M 50 86 L 16 86" />
+                        <path d="M 14 50 L 14 16" />
+                    </g>
+                    <!-- 4 Traditional Auspicious Dots in quadrants -->
+                    <circle cx="32" cy="32" r="3.5" fill="#7c3aed" />
+                    <circle cx="68" cy="32" r="3.5" fill="#7c3aed" />
+                    <circle cx="32" cy="68" r="3.5" fill="#7c3aed" />
+                    <circle cx="68" cy="68" r="3.5" fill="#7c3aed" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Bottom Right: Admin Login Corner Card -->
+        <div class="pro-login-card admin-login-corner-card"
+            style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
+            <h2>
+                <i class="fa-solid fa-shield-halved" style="color: #7c3aed; font-size: 13px;"></i> Admin Login
+            </h2>
+            <div id="rapidoAuthErrorAlert" class="auth-error-banner"
+                style="display:none; margin-bottom: 8px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 6px 8px; border-radius: 6px; border: 1px solid #fecaca;"></div>
+
+            <form id="rapidoLoginForm" action="#" method="POST" onsubmit="handleRapidoLogin(event)"
+                style="text-align: left;">
+                <div class="input-group">
+                    <label for="rapidoAdminId">Admin ID</label>
+                    <input type="text" id="rapidoAdminId" required placeholder="Enter Admin ID">
+                </div>
+                <div class="input-group">
+                    <label for="rapidoPass">Password</label>
+                    <input type="password" id="rapidoPass" required placeholder="Enter password">
+                </div>
+
+                <button type="submit" style="background-color: #7c3aed; color: white;">Login</button>
             </form>
         </div>
     </div>
@@ -2314,7 +2493,35 @@
             style="width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></iframe>
     </div>
 
-    <script src="script.js?v=41"></script>
+    <!-- ORANGE / O PORTAL VIEW (Investor Presentation) -->
+    <div id="orange-view" class="view-hidden app-view"
+        style="background-color: #07050a; min-height: 100vh; position: relative; display: none; width: 100%; height: 100%; z-index: 9999;">
+        <!-- Nav / Back Button (Floating above iframe) -->
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <!-- LEFT: Joining Hands Logo ONLY -->
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); backdrop-filter: blur(5px);"></i>
+            </div>
+            <!-- RIGHT: Home -->
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                </button>
+            </div>
+        </div>
+
+        <!-- Iframe isolating the presentation UI -->
+        <iframe src="/presentation"
+            style="width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></iframe>
+    </div>
+
+    <script src="script.js?v=49"></script>
 </body>
 
 </html>

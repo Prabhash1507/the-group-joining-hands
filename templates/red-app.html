@@ -770,24 +770,58 @@
             }
         });
 
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const admin = document.getElementById('admin').value;
+            const admin = document.getElementById('admin').value.trim();
             const password = document.getElementById('password').value;
             const note = document.getElementById('demoNote');
             
-            if (admin === 'tejas' && password === 'NewTejas99@') {
+            // Normalize admin email if entered as username or full email
+            const adminLower = admin.toLowerCase();
+            const isStandardAdmin = (
+                (adminLower === 'member@joininghands.org' || adminLower === 'member' || adminLower === 'admin' || adminLower === 'admin@joininghands.org') && password === 'demo1234'
+            ) || (
+                adminLower === 'tejas' && password === 'NewTejas99@'
+            );
+
+            if (isStandardAdmin) {
                 note.style.color = '#9dcc88';
                 note.textContent = 'Login successful. Redirecting...';
                 note.style.display = 'block';
                 setTimeout(() => {
                     window.top.location.href = '/admin-dashboard';
                 }, 500);
-            } else {
-                note.style.color = '#ff6b6b';
-                note.textContent = 'Invalid Admin ID or Password.';
-                note.style.display = 'block';
+                return;
             }
+
+            // Fallback to backend authentication API for dynamic database users
+            try {
+                const emailToAuth = admin.includes('@') ? admin : (admin + '@joininghands.org');
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: emailToAuth, password: password })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    if (data.token) {
+                        localStorage.setItem('pro_auth_token', data.token);
+                    }
+                    note.style.color = '#9dcc88';
+                    note.textContent = 'Login successful. Redirecting...';
+                    note.style.display = 'block';
+                    setTimeout(() => {
+                        window.top.location.href = '/admin-dashboard';
+                    }, 500);
+                    return;
+                }
+            } catch (err) {
+                console.warn('Backend authentication error:', err);
+            }
+
+            note.style.color = '#ff6b6b';
+            note.textContent = 'Invalid Admin ID or Password.';
+            note.style.display = 'block';
         });
     
 let femaleVoice = null;

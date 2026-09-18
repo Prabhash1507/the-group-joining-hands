@@ -529,6 +529,16 @@ class EnterpriseRESTRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             # Fallback check
             if not os.path.exists(filepath):
+                if 'bharatmata' in filename:
+                    alt_file = os.path.join(IMAGES_DIR, filename.replace('bharatmata', 'bharatamata'))
+                    if os.path.exists(alt_file):
+                        filepath = alt_file
+                elif 'bharatamata' in filename:
+                    alt_file = os.path.join(IMAGES_DIR, filename.replace('bharatamata', 'bharatmata'))
+                    if os.path.exists(alt_file):
+                        filepath = alt_file
+
+            if not os.path.exists(filepath):
                 if os.path.exists(os.path.join(BASE_DIR, filename)):
                     filepath = os.path.join(BASE_DIR, filename)
 

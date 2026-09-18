@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* Modern CSS Custom Properties & Design Tokens */
         :root {
@@ -20,15 +23,15 @@
             --border-card-hover: rgba(255, 119, 0, 0.35);
             --text-main: #f3f1f6;
             --text-muted: #a39cb2;
-            
+
             --purple-primary: #7c3aed;
             --purple-glow: rgba(124, 58, 237, 0.4);
             --kesari-primary: #ff7700;
             --kesari-glow: rgba(255, 119, 0, 0.4);
-            
+
             --grad-accent: linear-gradient(135deg, var(--purple-primary) 0%, var(--kesari-primary) 100%);
             --grad-dark: linear-gradient(180deg, #09070f 0%, #040306 100%);
-            
+
             --font-head: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -62,6 +65,7 @@
             opacity: 0.15;
             pointer-events: none;
         }
+
         .glow-1 {
             width: 50vw;
             height: 50vw;
@@ -69,6 +73,7 @@
             top: -10vw;
             left: -10vw;
         }
+
         .glow-2 {
             width: 45vw;
             height: 45vw;
@@ -146,9 +151,20 @@
         }
 
         @keyframes pulse-dot {
-            0% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.5; }
+            0% {
+                transform: scale(0.95);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 0.5;
+            }
         }
 
         .btn-action {
@@ -184,7 +200,8 @@
 
         .slide-track {
             display: flex;
-            width: 1000%; /* For 10 slides */
+            width: 1000%;
+            /* For 10 slides */
             height: 85%;
             transition: transform 0.7s cubic-bezier(0.2, 0.95, 0.3, 1);
         }
@@ -265,21 +282,29 @@
         }
 
         /* CSS Micro-Animations on active slides */
-        .slide-body > * {
+        .slide-body>* {
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .slide.active-slide .slide-body > * {
+        .slide.active-slide .slide-body>* {
             opacity: 1;
             transform: translateY(0);
         }
 
         /* Add staggered transitions to kids of slide body */
-        .slide.active-slide .slide-body > *:nth-child(1) { transition-delay: 0.1s; }
-        .slide.active-slide .slide-body > *:nth-child(2) { transition-delay: 0.25s; }
-        .slide.active-slide .slide-body > *:nth-child(3) { transition-delay: 0.4s; }
+        .slide.active-slide .slide-body>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .slide.active-slide .slide-body>*:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+
+        .slide.active-slide .slide-body>*:nth-child(3) {
+            transition-delay: 0.4s;
+        }
 
         /* Slide Footer */
         .slide-footer-info {
@@ -300,7 +325,7 @@
         }
 
         /* Custom Content Formats */
-        
+
         /* Grid Layouts */
         .grid-2col {
             display: grid;
@@ -466,7 +491,8 @@
             margin-top: 1rem;
         }
 
-        table.matrix-table th, table.matrix-table td {
+        table.matrix-table th,
+        table.matrix-table td {
             padding: 0.8rem 1rem;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -567,7 +593,8 @@
             left: 0;
             top: 0;
             height: 100%;
-            width: 10%; /* Driven by JS */
+            width: 10%;
+            /* Driven by JS */
             background: var(--grad-accent);
             transition: width 0.4s cubic-bezier(0.1, 0.8, 0.3, 1);
             box-shadow: 0 0 8px var(--kesari-primary);
@@ -642,7 +669,7 @@
         .svg-illustration svg {
             max-width: 100%;
             max-height: 100%;
-            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
         }
 
         /* Custom Responsive Adjustments */
@@ -651,13 +678,16 @@
                 width: 92%;
                 padding: 2.5rem 3rem;
             }
+
             .grid-2col {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+
             .svg-illustration {
                 height: 180px;
             }
+
             .glowing-hero-text {
                 font-size: 2.8rem;
             }
@@ -668,32 +698,41 @@
                 overflow-y: auto;
                 height: auto;
             }
+
             .presentation-viewport {
                 height: auto;
                 margin: 2rem 0;
             }
+
             .slide-track {
                 height: auto;
             }
+
             .slide-card {
                 padding: 1.5rem 2rem;
                 height: auto;
             }
+
             .grid-3col {
                 grid-template-columns: 1fr;
             }
+
             .grid-4col {
                 grid-template-columns: repeat(2, 1fr);
             }
-            header, .nav-bar {
+
+            header,
+            .nav-bar {
                 padding: 1rem 1.5rem;
             }
+
             .progress-bar-wrap {
                 display: none;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Ambient glowing backgrounds -->
@@ -730,7 +769,8 @@
                         <div>
                             <h1 class="glowing-hero-text">The Group of Joining Hands</h1>
                             <p class="intro-lead">
-                                Fostering Unity, Professional Networking, and Visual Storytelling under a single high-performance community ecosystem.
+                                Fostering Unity, Professional Networking, and Visual Storytelling under a single
+                                high-performance community ecosystem.
                             </p>
                             <button class="btn-primary" onclick="nextSlide()">
                                 <span>Start Presentation</span>
@@ -738,13 +778,17 @@
                             </button>
                         </div>
                         <div class="svg-illustration">
-                            <svg viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 200 200" width="200" height="200" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <!-- Sacred White Bull / Symmetrical Logo Base -->
-                                <circle cx="100" cy="100" r="80" fill="url(#violetSaffronGrad)" fill-opacity="0.1" stroke="url(#violetSaffronGrad)" stroke-width="1.5" />
-                                <circle cx="100" cy="100" r="50" fill="none" stroke="url(#violetSaffronGrad)" stroke-dasharray="8,4" stroke-width="1" />
+                                <circle cx="100" cy="100" r="80" fill="url(#violetSaffronGrad)" fill-opacity="0.1"
+                                    stroke="url(#violetSaffronGrad)" stroke-width="1.5" />
+                                <circle cx="100" cy="100" r="50" fill="none" stroke="url(#violetSaffronGrad)"
+                                    stroke-dasharray="8,4" stroke-width="1" />
                                 <g transform="translate(100, 100) scale(0.6)">
                                     <!-- Simplified geometric design representing collaboration -->
-                                    <path d="M-60,-20 C-20,-60 20,-60 60,-20 C30,-30 -30,-30 -60,-20 Z" fill="#ff7700" />
+                                    <path d="M-60,-20 C-20,-60 20,-60 60,-20 C30,-30 -30,-30 -60,-20 Z"
+                                        fill="#ff7700" />
                                     <path d="M-60,20 C-20,60 20,60 60,20 C30,30 -30,30 -60,20 Z" fill="#7c3aed" />
                                     <circle cx="0" cy="0" r="18" fill="#ffffff" />
                                     <!-- Garland Motif / Auspicious Dots -->
@@ -752,7 +796,8 @@
                                     <circle cx="35" cy="0" r="5" fill="#ffffff" />
                                 </g>
                                 <defs>
-                                    <linearGradient id="violetSaffronGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                                    <linearGradient id="violetSaffronGrad" x1="0" y1="0" x2="200" y2="200"
+                                        gradientUnits="userSpaceOnUse">
                                         <stop stop-color="#7c3aed" />
                                         <stop offset="1" stop-color="#ff7700" />
                                     </linearGradient>
@@ -778,19 +823,26 @@
                         <div>
                             <ul class="bullet-list" style="gap: 1.5rem;">
                                 <li>
-                                    <strong>Our Vision:</strong> To establish a robust, single-login digital sanctuary in India where community solidarity, career growth, and daily transit coexist.
+                                    <strong>Our Vision:</strong> To establish a robust, single-login digital sanctuary
+                                    in India where community solidarity, career growth, and daily transit coexist.
                                 </li>
                                 <li>
-                                    <strong>Together Forever:</strong> Not just a slogan, but the structural blueprint of our database and UI. Every member is verified, building an ecosystem of absolute trust.
+                                    <strong>Together Forever:</strong> Not just a slogan, but the structural blueprint
+                                    of our database and UI. Every member is verified, building an ecosystem of absolute
+                                    trust.
                                 </li>
                                 <li>
-                                    <strong>Pure white aesthetics:</strong> The landing page features a minimalist corporate white setup with hardware-accelerated animations, proving top engineering standards.
+                                    <strong>Pure white aesthetics:</strong> The landing page features a minimalist
+                                    corporate white setup with hardware-accelerated animations, proving top engineering
+                                    standards.
                                 </li>
                             </ul>
                         </div>
                         <div class="grid-2col" style="gap: 1rem;">
-                            <div class="metric-block" style="background: rgba(255, 119, 0, 0.03); border-color: rgba(255, 119, 0, 0.1);">
-                                <div class="metric-val" style="background: linear-gradient(135deg, #ffffff, #ffa751);">100%</div>
+                            <div class="metric-block"
+                                style="background: rgba(255, 119, 0, 0.03); border-color: rgba(255, 119, 0, 0.1);">
+                                <div class="metric-val" style="background: linear-gradient(135deg, #ffffff, #ffa751);">
+                                    100%</div>
                                 <div class="metric-lbl">Aadhaar/KYC Verified Pool</div>
                             </div>
                             <div class="metric-block">
@@ -815,19 +867,26 @@
                     </div>
                     <div class="slide-body grid-3col">
                         <div class="feature-card">
-                            <i class="fa-solid fa-arrows-split-up-and-left" style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;"></i>
+                            <i class="fa-solid fa-arrows-split-up-and-left"
+                                style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;"></i>
                             <h3>App Fragmentation</h3>
-                            <p>Users shuffle between three separate applications for their careers, social posting, and local travel bookings. This causes severe context-switching fatigue and fragmented data profiles.</p>
+                            <p>Users shuffle between three separate applications for their careers, social posting, and
+                                local travel bookings. This causes severe context-switching fatigue and fragmented data
+                                profiles.</p>
                         </div>
                         <div class="feature-card">
-                            <i class="fa-solid fa-user-shield" style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;"></i>
+                            <i class="fa-solid fa-user-shield"
+                                style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;"></i>
                             <h3>Loss of Trust</h3>
-                            <p>Public social networks are flooded with unverified profiles, marketing spam, fake job listings, and algorithmic echo-chambers that exploit user engagement.</p>
+                            <p>Public social networks are flooded with unverified profiles, marketing spam, fake job
+                                listings, and algorithmic echo-chambers that exploit user engagement.</p>
                         </div>
                         <div class="feature-card">
-                            <i class="fa-solid fa-rectangle-ad" style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;"></i>
+                            <i class="fa-solid fa-rectangle-ad"
+                                style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;"></i>
                             <h3>Intrusive Advertising</h3>
-                            <p>Traditional giants monetize via aggressive user tracking and ad space bidding, degrading application speed and turning users into raw commodities.</p>
+                            <p>Traditional giants monetize via aggressive user tracking and ad space bidding, degrading
+                                application speed and turning users into raw commodities.</p>
                         </div>
                     </div>
                     <div class="slide-footer-info">
@@ -848,20 +907,27 @@
                         <div>
                             <ul class="bullet-list" style="gap: 1.2rem;">
                                 <li>
-                                    <strong>SSO Unified Access:</strong> One credential logs members into a professional network, stories dashboard, and local transit booking system.
+                                    <strong>SSO Unified Access:</strong> One credential logs members into a professional
+                                    network, stories dashboard, and local transit booking system.
                                 </li>
                                 <li>
-                                    <strong>Hardware-Accelerated Fluidity:</strong> Entire application operates as a seamless SPA, providing 60 FPS transitions and native-app feel in standard browsers.
+                                    <strong>Hardware-Accelerated Fluidity:</strong> Entire application operates as a
+                                    seamless SPA, providing 60 FPS transitions and native-app feel in standard browsers.
                                 </li>
                                 <li>
-                                    <strong>Hand-Coded Performance:</strong> Stripped of bloated external packages. Native CSS Variables, semantic templates, and vanilla Javascript reduce page weight to under 450KB.
+                                    <strong>Hand-Coded Performance:</strong> Stripped of bloated external packages.
+                                    Native CSS Variables, semantic templates, and vanilla Javascript reduce page weight
+                                    to under 450KB.
                                 </li>
                             </ul>
                         </div>
                         <div class="metric-block" style="padding: 2.5rem 1.5rem;">
-                            <i class="fa-solid fa-arrows-spin" style="font-size: 2.5rem; color: var(--kesari-primary); margin-bottom: 1rem; animation: fa-spin 12s linear infinite;"></i>
-                            <h3 style="font-family: var(--font-head); font-size: 1.3rem; margin-bottom: 0.5rem;">Complete Platform Synergy</h3>
-                            <p style="color: var(--text-muted); font-size: 0.85rem;">Connecting professional growth, daily logistics, and visual stories under a single database transaction model.</p>
+                            <i class="fa-solid fa-arrows-spin"
+                                style="font-size: 2.5rem; color: var(--kesari-primary); margin-bottom: 1rem; animation: fa-spin 12s linear infinite;"></i>
+                            <h3 style="font-family: var(--font-head); font-size: 1.3rem; margin-bottom: 0.5rem;">
+                                Complete Platform Synergy</h3>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Connecting professional growth,
+                                daily logistics, and visual stories under a single database transaction model.</p>
                         </div>
                     </div>
                     <div class="slide-footer-info">
@@ -882,20 +948,27 @@
                         <div class="feature-card">
                             <i class="fa-solid fa-briefcase"></i>
                             <h3 style="color: var(--kesari-primary);">ProConnect</h3>
-                            <p style="margin-bottom: 0.8rem; font-weight: 600; font-size: 0.8rem;">Professional Career Network</p>
-                            <p>Featuring a complete feed, connection invites, active user statistics, articles creation, messaging logs, and automatic theme toggling.</p>
+                            <p style="margin-bottom: 0.8rem; font-weight: 600; font-size: 0.8rem;">Professional Career
+                                Network</p>
+                            <p>Featuring a complete feed, connection invites, active user statistics, articles creation,
+                                messaging logs, and automatic theme toggling.</p>
                         </div>
                         <div class="feature-card">
                             <i class="fa-solid fa-camera-retro"></i>
                             <h3 style="color: var(--purple-primary);">GramConnect</h3>
-                            <p style="margin-bottom: 0.8rem; font-weight: 600; font-size: 0.8rem;">Visual Stories Portal</p>
-                            <p>Interactive horizontal stories, grid timeline, double-tap floating heart feedback, and instant comment submission forms.</p>
+                            <p style="margin-bottom: 0.8rem; font-weight: 600; font-size: 0.8rem;">Visual Stories Portal
+                            </p>
+                            <p>Interactive horizontal stories, grid timeline, double-tap floating heart feedback, and
+                                instant comment submission forms.</p>
                         </div>
                         <div class="feature-card">
-                            <i class="fa-solid fa-motorcycle" style="background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text;"></i>
+                            <i class="fa-solid fa-motorcycle"
+                                style="background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text;"></i>
                             <h3 style="color: #f59e0b;">H Rides</h3>
-                            <p style="margin-bottom: 0.8rem; font-weight: 600; font-size: 0.8rem;">Rapido Ride-Booking Portal</p>
-                            <p>Live HTML canvas route mapping, rider/captain role toggle, active GPS simulated navigation, and server-backed ride status boards.</p>
+                            <p style="margin-bottom: 0.8rem; font-weight: 600; font-size: 0.8rem;">Rapido Ride-Booking
+                                Portal</p>
+                            <p>Live HTML canvas route mapping, rider/captain role toggle, active GPS simulated
+                                navigation, and server-backed ride status boards.</p>
                         </div>
                     </div>
                     <div class="slide-footer-info">
@@ -914,24 +987,32 @@
                     </div>
                     <div class="slide-body grid-4col">
                         <div class="metric-block" style="background: rgba(124, 58, 237, 0.05);">
-                            <i class="fa-brands fa-html5" style="color: #e34f26; font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                            <i class="fa-brands fa-html5"
+                                style="color: #e34f26; font-size: 2rem; margin-bottom: 0.5rem;"></i>
                             <h4 style="font-family: var(--font-head); margin-bottom: 0.4rem;">Frontend</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted);">Vanilla HTML5, ES6 JS, Custom CSS3, 60fps Keyframes</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Vanilla HTML5, ES6 JS, Custom CSS3,
+                                60fps Keyframes</p>
                         </div>
                         <div class="metric-block" style="background: rgba(255, 119, 0, 0.05);">
-                            <i class="fa-brands fa-python" style="color: #3776ab; font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                            <i class="fa-brands fa-python"
+                                style="color: #3776ab; font-size: 2rem; margin-bottom: 0.5rem;"></i>
                             <h4 style="font-family: var(--font-head); margin-bottom: 0.4rem;">Backend</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted);">Python socketserver, ThreadingTCPServer, Gzip Compression</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Python socketserver,
+                                ThreadingTCPServer, Gzip Compression</p>
                         </div>
                         <div class="metric-block" style="background: rgba(124, 58, 237, 0.05);">
-                            <i class="fa-solid fa-database" style="color: #003b57; font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                            <i class="fa-solid fa-database"
+                                style="color: #003b57; font-size: 2rem; margin-bottom: 0.5rem;"></i>
                             <h4 style="font-family: var(--font-head); margin-bottom: 0.4rem;">Database</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted);">Relational SQLite, Normalized Schema, Indexed Queries</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Relational SQLite, Normalized
+                                Schema, Indexed Queries</p>
                         </div>
                         <div class="metric-block" style="background: rgba(255, 119, 0, 0.05);">
-                            <i class="fa-solid fa-key" style="color: #10b981; font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                            <i class="fa-solid fa-key"
+                                style="color: #10b981; font-size: 2rem; margin-bottom: 0.5rem;"></i>
                             <h4 style="font-family: var(--font-head); margin-bottom: 0.4rem;">Security</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted);">RFC 7519 JWT, Hashed Passwords, Sliding Rate Limiters</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">RFC 7519 JWT, Hashed Passwords,
+                                Sliding Rate Limiters</p>
                         </div>
                     </div>
                     <div class="slide-footer-info">
@@ -952,13 +1033,18 @@
                         <div>
                             <ul class="bullet-list" style="gap: 1rem;">
                                 <li>
-                                    <strong>Volume User Retention:</strong> Users spend 3.5x more active time due to the combination of career, lifestyle blogging, and transit coordination in one interface.
+                                    <strong>Volume User Retention:</strong> Users spend 3.5x more active time due to the
+                                    combination of career, lifestyle blogging, and transit coordination in one
+                                    interface.
                                 </li>
                                 <li>
-                                    <strong>90% Hosting Cost Savings:</strong> Zero bulky node modules or massive client runtimes. The CPU rendering and data polling run smoothly on minimal hardware.
+                                    <strong>90% Hosting Cost Savings:</strong> Zero bulky node modules or massive client
+                                    runtimes. The CPU rendering and data polling run smoothly on minimal hardware.
                                 </li>
                                 <li>
-                                    <strong>Data Synergy Multiplying Value:</strong> Integrated datasets enable precise matching algorithms, helping local organizers host local events with high RSVP completion rate.
+                                    <strong>Data Synergy Multiplying Value:</strong> Integrated datasets enable precise
+                                    matching algorithms, helping local organizers host local events with high RSVP
+                                    completion rate.
                                 </li>
                             </ul>
                         </div>
@@ -990,24 +1076,36 @@
                     <div class="slide-body">
                         <div class="grid-4col" style="margin-top: 1rem;">
                             <div class="feature-card" style="text-align: center;">
-                                <div style="width: 35px; height: 35px; border-radius: 50%; background: var(--purple-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">1</div>
+                                <div
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: var(--purple-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">
+                                    1</div>
                                 <h4>Landing Entrance</h4>
-                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">User enters via the pure white landing deck and browses active initiatives.</p>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">User enters via the pure white landing
+                                    deck and browses active initiatives.</p>
                             </div>
                             <div class="feature-card" style="text-align: center;">
-                                <div style="width: 35px; height: 35px; border-radius: 50%; background: var(--kesari-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">2</div>
+                                <div
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: var(--kesari-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">
+                                    2</div>
                                 <h4>Secure Auth SSO</h4>
-                                  <p style="font-size: 0.8rem; margin-top: 0.5rem;">One-click credentials generate a secure JWT, initializing dashboard metrics.</p>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">One-click credentials generate a
+                                    secure JWT, initializing dashboard metrics.</p>
                             </div>
                             <div class="feature-card" style="text-align: center;">
-                                <div style="width: 35px; height: 35px; border-radius: 50%; background: var(--purple-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">3</div>
+                                <div
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: var(--purple-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">
+                                    3</div>
                                 <h4>Interactive Flow</h4>
-                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">Create posts, update skills, write articles, or share photo stories instantly.</p>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">Create posts, update skills, write
+                                    articles, or share photo stories instantly.</p>
                             </div>
                             <div class="feature-card" style="text-align: center;">
-                                <div style="width: 35px; height: 35px; border-radius: 50%; background: var(--kesari-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">4</div>
+                                <div
+                                    style="width: 35px; height: 35px; border-radius: 50%; background: var(--kesari-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">
+                                    4</div>
                                 <h4>Transit Dispatch</h4>
-                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">Toggle to H Rides, view map coordinates, and start booking simulated routes.</p>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">Toggle to H Rides, view map
+                                    coordinates, and start booking simulated routes.</p>
                             </div>
                         </div>
                     </div>
@@ -1083,21 +1181,24 @@
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-content">
                                     <h4>Q1 2027: Portal Expansion (H Initiatives)</h4>
-                                    <p>Deploying the youth empowerment, welfare dashboard, and public donation tracking system built on secure ledgers.</p>
+                                    <p>Deploying the youth empowerment, welfare dashboard, and public donation tracking
+                                        system built on secure ledgers.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot" style="background: var(--kesari-primary);"></div>
                                 <div class="timeline-content">
                                     <h4>Q2 2027: Machine Learning Career Match</h4>
-                                    <p>Integrating simple, server-side content filtering matching member CV skills in ProConnect to localized opportunities.</p>
+                                    <p>Integrating simple, server-side content filtering matching member CV skills in
+                                        ProConnect to localized opportunities.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-content">
                                     <h4>Q3 2027: End-to-End Cryptography (E2EE)</h4>
-                                    <p>Transitioning direct messaging in ProConnect to decentralized WebRTC tunnels ensuring absolute privacy.</p>
+                                    <p>Transitioning direct messaging in ProConnect to decentralized WebRTC tunnels
+                                        ensuring absolute privacy.</p>
                                 </div>
                             </div>
                         </div>
@@ -1139,7 +1240,7 @@
         const progressBarFill = document.getElementById('progressBarFill');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        
+
         let currentSlide = 0;
         const totalSlides = slides.length;
 
@@ -1159,18 +1260,18 @@
         // Navigate to a specific slide
         function goToSlide(slideIndex) {
             if (slideIndex < 0 || slideIndex >= totalSlides) return;
-            
+
             // Remove active classes
             slides[currentSlide].classList.remove('active-slide');
-            
+
             currentSlide = slideIndex;
-            
+
             // Add active class to new slide
             slides[currentSlide].classList.add('active-slide');
-            
+
             // Translate track
             slideTrack.style.transform = `translateX(-${currentSlide * 10}%)`;
-            
+
             // Update dots
             const dots = document.querySelectorAll('.dot');
             dots.forEach((dot, index) => {
@@ -1180,11 +1281,11 @@
                     dot.classList.remove('active-dot');
                 }
             });
-            
+
             // Update progress bar
             const percent = ((currentSlide + 1) / totalSlides) * 100;
             progressBarFill.style.width = `${percent}%`;
-            
+
             // Enable/disable buttons
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide === totalSlides - 1;
@@ -1217,13 +1318,13 @@
         function toggleFullscreen() {
             const doc = window.document;
             const docEl = doc.documentElement;
-            
+
             const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
             const cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-            
+
             const isFs = doc.fullscreenElement || doc.mozFullScreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
             const fsBtn = document.getElementById('fsBtn');
-            
+
             if (!isFs) {
                 requestFullScreen.call(docEl);
                 fsBtn.innerHTML = '<i class="fa-solid fa-compress"></i><span>Exit FS</span>';
@@ -1238,4 +1339,5 @@
         goToSlide(0);
     </script>
 </body>
+
 </html>
