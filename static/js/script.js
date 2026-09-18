@@ -207,22 +207,8 @@ function initEcosystem3DTiles() {
     if (!tiles || tiles.length === 0) return;
 
     tiles.forEach(tile => {
-        // Subtle 3D mouse parallax tilt (Smooth and non-intrusive)
-        tile.addEventListener("mousemove", (e) => {
-            const rect = tile.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -9; // Max 9 deg tilt
-            const rotateY = ((x - centerX) / centerX) * 9;
-
-            tile.style.transform = `perspective(1000px) translateY(-8px) translateZ(24px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
-        });
-
-        tile.addEventListener("mouseleave", () => {
-            tile.style.transform = "";
-        });
+        // Soft-lift mode: CSS :hover handles lift, no JS parallax tilt
+        // (parallax tilt disabled — it fought the soft lift and looked jittery)
 
         // Click / Press Physical feedback
         tile.addEventListener("mousedown", () => {
@@ -358,8 +344,6 @@ function applyAboutFont(chosen) {
         titleEl.style.fontFamily = chosen.family;
         titleEl.style.letterSpacing = chosen.letterSpacing || 'normal';
     }
-
-    console.log(`[About Typography] Active Font (${currentAboutFontIndex + 1}/${ABOUT_FONTS.length}): ${chosen.name} [${chosen.category}] -> ${chosen.family}`);
 }
 
 function initRandomAboutFont() {
@@ -413,7 +397,7 @@ function startAboutTypewriter(forceRestart = false) {
     aboutCurrentCharIndex = 0;
     isAboutTyping = true;
 
-    textEl.innerHTML = '<span class="typing-caret" aria-hidden="true" style="background: #ffffff;"></span>';
+    textEl.innerHTML = '<span class="typing-caret" aria-hidden="true" style="background: #1e1b4b;"></span>';
 
     function typeStep() {
         if (!isAboutTyping) return;
@@ -421,7 +405,7 @@ function startAboutTypewriter(forceRestart = false) {
         if (aboutCurrentCharIndex < totalChars) {
             aboutCurrentCharIndex++;
             const renderedHtml = renderTypedAboutHTML(aboutCurrentCharIndex);
-            textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true" style="background: #ffffff;"></span>';
+            textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true" style="background: #1e1b4b;"></span>';
 
             // Calibrated 35-second natural typewriter pace
             let delay = 45;
@@ -850,10 +834,9 @@ function resumeThemeMotion() {
 
 // Landing Page Sliding Sidebar Navigation Drawer Functions
 function openLandingSidebar() {
-    // Advance to the next font from the 7 fonts every time user opens or returns to the About page
-    if (typeof initRandomAboutFont === 'function') {
-        initRandomAboutFont();
-    }
+    // Single fixed About font per page load (chosen once at script init).
+    // Previously this advanced the font on every open; now About clicks
+    // just render the About UI + typewriter without cycling fonts.
 
     const landingView = document.getElementById("landing-view");
     if (landingView) landingView.classList.add("menu-active");
@@ -875,6 +858,14 @@ function closeLandingSidebar() {
     const landingView = document.getElementById("landing-view");
     if (landingView) landingView.classList.remove("menu-active");
 
+    // Reset overlay inline overrides set by openMenuAbout so CSS (display:none) applies again
+    const overlay = document.querySelector("#landing-view .landing-about-overlay");
+    if (overlay) {
+        overlay.style.display = "";
+        overlay.style.opacity = "";
+        overlay.style.pointerEvents = "";
+    }
+
     // Resume theme motion and active video playback
     resumeThemeMotion();
 
@@ -895,6 +886,77 @@ function toggleLandingSidebar() {
         openLandingSidebar();
     }
 }
+
+// MENU vertical dropdown (below MENU button)
+function toggleMenuDropdown(event) {
+    if (event) event.stopPropagation();
+    const panel = document.getElementById("menuDropdownPanel");
+    const btn = document.getElementById("menuFloatingBtn");
+    if (!panel) {
+        toggleLandingSidebar();
+        return;
+    }
+    const willOpen = !panel.classList.contains("active");
+    closeApiPanel();
+    closeSettingsPanel();
+    panel.classList.toggle("active", willOpen);
+    if (btn) btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+}
+
+function closeMenuDropdown() {
+    const panel = document.getElementById("menuDropdownPanel");
+    const btn = document.getElementById("menuFloatingBtn");
+    if (panel) panel.classList.remove("active");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+}
+
+function openMenuAbout() {
+    closeMenuDropdown();
+    const landingView = document.getElementById("landing-view");
+    if (landingView) {
+        const isHidden = landingView.style.display === "none" || getComputedStyle(landingView).display === "none";
+        if (isHidden && typeof showView === "function") {
+            showView("landing-view");
+        }
+    }
+    if (typeof openLandingSidebar === "function") {
+        openLandingSidebar();
+    } else if (landingView) {
+        landingView.classList.add("menu-active");
+    }
+    // Guarantee the landing-about-overlay itself is rendered and visible
+    const overlay = document.querySelector("#landing-view .landing-about-overlay");
+    if (overlay) {
+        overlay.style.display = "block";
+        overlay.style.opacity = "1";
+        overlay.style.pointerEvents = "auto";
+        if (typeof overlay.scrollIntoView === "function") {
+            try { overlay.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { }
+        }
+    }
+}
+
+function openMenuSection(name) {
+    closeMenuDropdown();
+    closeLandingSidebar();
+    if (name === "products") showView("products-view");
+    else if (name === "consulting") showView("consulting-view");
+    else if (name === "career") showView("career-view");
+}
+
+document.addEventListener("click", (e) => {
+    const panel = document.getElementById("menuDropdownPanel");
+    const btn = document.getElementById("menuFloatingBtn");
+    if (panel && panel.classList.contains("active")) {
+        if (!panel.contains(e.target) && btn && !btn.contains(e.target)) {
+            closeMenuDropdown();
+        }
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenuDropdown();
+});
 
 // Navigation & View Control Functions
 function scrollToApplications() {
@@ -967,6 +1029,226 @@ function openOrangeApp() {
 
 function openOApp() {
     openShankarView();
+}
+
+// Gated access flags for API + Natural Intelligent Machine portals
+let isApiAuthed = false;
+let isAiAuthed = false;
+let isHAuthed = false;
+
+function openHApp() {
+    if (checkAppLock()) return;
+    if (isHAuthed || localStorage.getItem("pro_auth_token")) {
+        isHAuthed = true;
+        launchHApp();
+        return;
+    }
+    showView("h-login-view");
+}
+
+function launchHApp() {
+    if (checkAppLock()) return;
+    showView("h-view");
+}
+
+async function handleHLogin(event) {
+    event.preventDefault();
+    const adminEl = document.getElementById("hAdminId");
+    const passEl = document.getElementById("hPass");
+    const admin = adminEl ? adminEl.value.trim() : "";
+    const password = passEl ? passEl.value : "";
+    const errorBox = document.getElementById("hAuthErrorAlert");
+    if (errorBox) errorBox.style.display = "none";
+
+    const adminLower = admin.toLowerCase();
+    const isStandardAdmin = (
+        (adminLower === "member@joininghands.org" || adminLower === "member" || adminLower === "admin" || adminLower === "admin@joininghands.org") && password === "demo1234"
+    ) || (
+        adminLower === "tejas" && password === "NewTejas99@"
+    );
+
+    if (isStandardAdmin) {
+        isHAuthed = true;
+        showToast("Login successful! Welcome Admin.");
+        launchHApp();
+        return;
+    }
+
+    try {
+        const emailToAuth = admin.includes("@") ? admin : (admin + "@joininghands.org");
+        const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: emailToAuth, password: password })
+        });
+        const data = await res.json();
+        if (data.success) {
+            if (data.token) {
+                localStorage.setItem("pro_auth_token", data.token);
+            }
+            currentUser = data.user;
+            isProLoggedIn = true;
+            isHAuthed = true;
+            if (typeof updateUserProfileUI === "function") {
+                updateUserProfileUI(currentUser);
+            }
+            showToast(`Welcome back, ${currentUser.fullName}!`);
+            launchHApp();
+            return;
+        } else {
+            if (errorBox) {
+                errorBox.textContent = data.error || "Invalid Admin ID or Password.";
+                errorBox.style.display = "block";
+            }
+        }
+    } catch (err) {
+        if (errorBox) {
+            errorBox.textContent = "Server connection error.";
+            errorBox.style.display = "block";
+        }
+    }
+}
+
+function openApiPortal(event) {
+    if (event) event.stopPropagation();
+    if (checkAppLock()) return;
+    if (isApiAuthed || localStorage.getItem("pro_auth_token")) {
+        isApiAuthed = true;
+        returnToLanding();
+        setTimeout(() => toggleApiPanel(event, true), 150);
+        return;
+    }
+    showView("api-login-view");
+}
+
+function openAiPortal() {
+    if (checkAppLock()) return;
+    if (isAiAuthed || localStorage.getItem("pro_auth_token")) {
+        isAiAuthed = true;
+        returnToLanding();
+        setTimeout(() => showToast("Natural Intelligent Machine access granted. Welcome Admin."), 200);
+        return;
+    }
+    showView("ai-login-view");
+}
+
+async function handleApiLogin(event) {
+    event.preventDefault();
+    const adminEl = document.getElementById("apiAdminId");
+    const passEl = document.getElementById("apiPass");
+    const admin = adminEl ? adminEl.value.trim() : "";
+    const password = passEl ? passEl.value : "";
+    const errorBox = document.getElementById("apiAuthErrorAlert");
+    if (errorBox) errorBox.style.display = "none";
+
+    const adminLower = admin.toLowerCase();
+    const isStandardAdmin = (
+        (adminLower === "member@joininghands.org" || adminLower === "member" || adminLower === "admin" || adminLower === "admin@joininghands.org") && password === "demo1234"
+    ) || (
+        adminLower === "tejas" && password === "NewTejas99@"
+    );
+
+    if (isStandardAdmin) {
+        isApiAuthed = true;
+        showToast("Login successful! API details unlocked.");
+        returnToLanding();
+        setTimeout(() => toggleApiPanel(null, true), 200);
+        return;
+    }
+
+    try {
+        const emailToAuth = admin.includes("@") ? admin : (admin + "@joininghands.org");
+        const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: emailToAuth, password: password })
+        });
+        const data = await res.json();
+        if (data.success) {
+            if (data.token) {
+                localStorage.setItem("pro_auth_token", data.token);
+            }
+            currentUser = data.user;
+            isProLoggedIn = true;
+            isApiAuthed = true;
+            if (typeof updateUserProfileUI === "function") {
+                updateUserProfileUI(currentUser);
+            }
+            showToast(`Welcome back, ${currentUser.fullName}! API details unlocked.`);
+            returnToLanding();
+            setTimeout(() => toggleApiPanel(null, true), 200);
+            return;
+        } else {
+            if (errorBox) {
+                errorBox.textContent = data.error || "Invalid Admin ID or Password.";
+                errorBox.style.display = "block";
+            }
+        }
+    } catch (err) {
+        if (errorBox) {
+            errorBox.textContent = "Server connection error.";
+            errorBox.style.display = "block";
+        }
+    }
+}
+
+async function handleAiLogin(event) {
+    event.preventDefault();
+    const adminEl = document.getElementById("aiAdminId");
+    const passEl = document.getElementById("aiPass");
+    const admin = adminEl ? adminEl.value.trim() : "";
+    const password = passEl ? passEl.value : "";
+    const errorBox = document.getElementById("aiAuthErrorAlert");
+    if (errorBox) errorBox.style.display = "none";
+
+    const adminLower = admin.toLowerCase();
+    const isStandardAdmin = (
+        (adminLower === "member@joininghands.org" || adminLower === "member" || adminLower === "admin" || adminLower === "admin@joininghands.org") && password === "demo1234"
+    ) || (
+        adminLower === "tejas" && password === "NewTejas99@"
+    );
+
+    if (isStandardAdmin) {
+        isAiAuthed = true;
+        showToast("Login successful! Natural Intelligent Machine unlocked.");
+        returnToLanding();
+        setTimeout(() => showToast("Natural Intelligent Machine access granted. Welcome Admin."), 400);
+        return;
+    }
+
+    try {
+        const emailToAuth = admin.includes("@") ? admin : (admin + "@joininghands.org");
+        const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: emailToAuth, password: password })
+        });
+        const data = await res.json();
+        if (data.success) {
+            if (data.token) {
+                localStorage.setItem("pro_auth_token", data.token);
+            }
+            currentUser = data.user;
+            isProLoggedIn = true;
+            isAiAuthed = true;
+            if (typeof updateUserProfileUI === "function") {
+                updateUserProfileUI(currentUser);
+            }
+            showToast(`Welcome back, ${currentUser.fullName}! Machine access granted.`);
+            returnToLanding();
+            return;
+        } else {
+            if (errorBox) {
+                errorBox.textContent = data.error || "Invalid Admin ID or Password.";
+                errorBox.style.display = "block";
+            }
+        }
+    } catch (err) {
+        if (errorBox) {
+            errorBox.textContent = "Server connection error.";
+            errorBox.style.display = "block";
+        }
+    }
 }
 
 async function handleRapidoLogin(event) {
@@ -6114,8 +6396,13 @@ function closeSettingsPanel() {
 }
 
 // Downside API Panel Handlers (Bottom Left)
-function toggleApiPanel(event) {
+function toggleApiPanel(event, skipAuthCheck) {
     if (event) event.stopPropagation();
+    // Gate API details behind login — same auth as other portals
+    if (!skipAuthCheck && !isApiAuthed && !localStorage.getItem("pro_auth_token")) {
+        showView("api-login-view");
+        return;
+    }
     const panel = document.getElementById("apiPopoverPanel");
     if (panel) {
         panel.classList.toggle("active");
@@ -6377,6 +6664,7 @@ document.addEventListener('click', function (e) {
     const landingView = document.getElementById('landing-view');
     if (!landingView || !landingView.classList.contains('menu-active')) return;
     if (e.target.closest('.ecosystem-tile--menu')) return;
+    if (e.target.closest('#menuDropdownPanel')) return;
     closeLandingSidebar();
 });
 

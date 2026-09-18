@@ -13,7 +13,7 @@
         rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=82">
+    <link rel="stylesheet" href="styles.css?v=83">
     <!-- Google Identity Services SDK -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -277,11 +277,11 @@
                 </div>
             </header>
 
-            <!-- Single 3D Menu Box Trigger -->
-            <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" onclick="toggleLandingSidebar()"
+            <!-- Single 3D Menu Box Trigger + Vertical Dropdown -->
+            <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="menuFloatingBtn" onclick="toggleMenuDropdown(event)"
                 role="button" tabindex="0"
-                onkeydown="if(event.key==='Enter'||event.key===' ') { toggleLandingSidebar(); }"
-                aria-label="Open Navigation Menu">
+                onkeydown="if(event.key==='Enter'||event.key===' ') { toggleMenuDropdown(event); }"
+                aria-label="Open Navigation Menu" aria-haspopup="true" aria-expanded="false">
                 <div class="tile-3d-body">
                     <div class="tile-3d-raised">
                         <div class="tile-3d-circle">
@@ -291,9 +291,25 @@
                 </div>
             </div>
 
+            <div class="menu-dropdown-panel" id="menuDropdownPanel" role="menu" aria-label="Site Menu">
+                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuAbout()">
+                    <i class="fa-solid fa-circle-info"></i><span>About</span>
+                </button>
+                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuSection('products')">
+                    <i class="fa-solid fa-box-open"></i><span>Products</span>
+                </button>
+                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuSection('consulting')">
+                    <i class="fa-solid fa-handshake-angle"></i><span>Consulting &amp; Services</span>
+                </button>
+                <button type="button" class="menu-dropdown-item" role="menuitem" onclick="openMenuSection('career')">
+                    <i class="fa-solid fa-briefcase"></i><span>Career Opportunity</span>
+                </button>
+            </div>
+
             <!-- Single 3D Natural Intelligent Machine Box Trigger -->
             <div class="vertical-ai-trigger ecosystem-tile ecosystem-tile--ai" role="button" tabindex="0"
-                aria-label="Natural Intelligent Machine Portal (Coming Soon)">
+                onclick="openAiPortal()" onkeydown="if(event.key==='Enter'||event.key===' ')openAiPortal()"
+                aria-label="Natural Intelligent Machine Portal">
                 <div class="tile-3d-body">
                     <div class="tile-3d-raised">
                         <div class="tile-3d-circle">
@@ -363,13 +379,15 @@
                             </div>
                         </div>
 
-                        <!-- 2. H TILE (Kesari / Saffron with White H) -->
+                        <!-- 2. H TILE (Kesari / Saffron with Stscope) -->
                         <div class="ecosystem-tile ecosystem-tile--h" role="button" tabindex="0"
-                            aria-label="Blank Application">
+                            onclick="openHApp()"
+                            onkeydown="if(event.key==='Enter'||event.key===' ')openHApp()"
+                            aria-label="Stscope Application">
                             <div class="tile-3d-body">
                                 <div class="tile-3d-raised">
                                     <div class="tile-3d-circle">
-                                        <span class="tile-letter">H</span>
+                                        <img src="/static/images/stscope.png" alt="Stscope" class="tile-symbol-img">
                                     </div>
                                 </div>
                             </div>
@@ -469,7 +487,7 @@
         <!-- Floating API Button and REST Endpoints Popover (Bottom Left) -->
         <div class="landing-api-container">
             <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="apiFloatingBtn"
-                onclick="toggleApiPanel(event)" role="button" tabindex="0" aria-label="Explore System REST APIs"
+                onclick="openApiPortal(event)" role="button" tabindex="0" aria-label="Explore System REST APIs"
                 title="API Documentation & System Endpoints"
                 style="position: relative; top: auto; left: auto; right: auto; margin: 0; transform: none; animation: none;">
                 <div class="tile-3d-body">
@@ -1489,6 +1507,250 @@
 
                 <button type="submit" style="background-color: #7c3aed; color: white;">Login</button>
             </form>
+        </div>
+    </div>
+
+    <!-- API PORTAL LOGIN SCREEN (gated, same auth API as other portals) -->
+    <div id="api-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #7c3aed; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div class="tile-3d-body" style="width: 200px; height: 200px; border-radius: 40px; background: linear-gradient(145deg, #8b5cf6 0%, #6d28d9 45%, #581c87 100%); display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 18px 45px rgba(124, 58, 237, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
+                    <span style="font-family: Calibri, sans-serif; font-size: 3rem; font-weight: 900; color: #ffffff;">API</span>
+                </div>
+            </div>
+            <p style="margin-top: 24px; color: #475569; font-weight: 600;">System REST APIs — Admin access required</p>
+        </div>
+
+        <div class="pro-login-card admin-login-corner-card"
+            style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
+            <h2>
+                <i class="fa-solid fa-shield-halved" style="color: #7c3aed; font-size: 13px;"></i> Admin Login
+            </h2>
+            <div id="apiAuthErrorAlert" class="auth-error-banner"
+                style="display:none; margin-bottom: 8px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 6px 8px; border-radius: 6px; border: 1px solid #fecaca;"></div>
+
+            <form id="apiLoginForm" action="#" method="POST" onsubmit="handleApiLogin(event)"
+                style="text-align: left;">
+                <div class="input-group">
+                    <label for="apiAdminId">Admin ID</label>
+                    <input type="text" id="apiAdminId" required placeholder="Enter Admin ID">
+                </div>
+                <div class="input-group">
+                    <label for="apiPass">Password</label>
+                    <input type="password" id="apiPass" required placeholder="Enter password">
+                </div>
+
+                <button type="submit" style="background-color: #7c3aed; color: white;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NATURAL INTELLIGENT MACHINE PORTAL LOGIN SCREEN (gated, same auth API) -->
+    <div id="ai-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #ea580c; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div class="tile-3d-body" style="width: 200px; height: 200px; border-radius: 40px; background: linear-gradient(145deg, #fb923c 0%, #f97316 45%, #ea580c 100%); display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 18px 45px rgba(234, 88, 12, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
+                    <span style="font-family: Calibri, sans-serif; font-size: 1.2rem; font-weight: 900; color: #ffffff; text-align: center; line-height: 1.4;">NATURAL<br>INTELLIGENT<br>MACHINE</span>
+                </div>
+            </div>
+            <p style="margin-top: 24px; color: #475569; font-weight: 600;">Natural Intelligent Machine — Admin access required</p>
+        </div>
+
+        <div class="pro-login-card admin-login-corner-card"
+            style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
+            <h2>
+                <i class="fa-solid fa-shield-halved" style="color: #ea580c; font-size: 13px;"></i> Admin Login
+            </h2>
+            <div id="aiAuthErrorAlert" class="auth-error-banner"
+                style="display:none; margin-bottom: 8px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 6px 8px; border-radius: 6px; border: 1px solid #fecaca;"></div>
+
+            <form id="aiLoginForm" action="#" method="POST" onsubmit="handleAiLogin(event)"
+                style="text-align: left;">
+                <div class="input-group">
+                    <label for="aiAdminId">Admin ID</label>
+                    <input type="text" id="aiAdminId" required placeholder="Enter Admin ID">
+                </div>
+                <div class="input-group">
+                    <label for="aiPass">Password</label>
+                    <input type="password" id="aiPass" required placeholder="Enter password">
+                </div>
+
+                <button type="submit" style="background-color: #ea580c; color: white;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- H (STSCOPE) PORTAL LOGIN SCREEN (gated, same auth API as other portals) -->
+    <div id="h-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; pointer-events: none;">
+            <img src="/static/images/stscope.png" alt="Stscope"
+                style="width: clamp(220px, 30vw, 340px); height: auto; filter: drop-shadow(0 18px 45px rgba(234, 88, 12, 0.28)); animation: gentleFloat 6s ease-in-out infinite alternate;">
+            <p style="margin-top: 24px; color: #475569; font-weight: 600;">Stscope Portal — Admin access required</p>
+        </div>
+
+        <div class="pro-login-card admin-login-corner-card"
+            style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
+            <h2>
+                <i class="fa-solid fa-shield-halved" style="color: #ea580c; font-size: 13px;"></i> Admin Login
+            </h2>
+            <div id="hAuthErrorAlert" class="auth-error-banner"
+                style="display:none; margin-bottom: 8px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 6px 8px; border-radius: 6px; border: 1px solid #fecaca;"></div>
+
+            <form id="hLoginForm" action="#" method="POST" onsubmit="handleHLogin(event)"
+                style="text-align: left;">
+                <div class="input-group">
+                    <label for="hAdminId">Admin ID</label>
+                    <input type="text" id="hAdminId" required placeholder="Enter Admin ID">
+                </div>
+                <div class="input-group">
+                    <label for="hPass">Password</label>
+                    <input type="password" id="hPass" required placeholder="Enter password">
+                </div>
+
+                <button type="submit" style="background-color: #ea580c; color: white;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- H (STSCOPE) PORTAL MAIN VIEW -->
+    <div id="h-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #f97316; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(5px);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 48px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
+            <img src="/static/images/stscope.png" alt="Stscope"
+                style="width: clamp(160px, 22vw, 240px); height: auto; filter: drop-shadow(0 14px 34px rgba(234, 88, 12, 0.3)); animation: gentleFloat 6s ease-in-out infinite alternate;">
+            <h2 style="margin: 24px 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Stscope Portal</h2>
+            <p style="margin: 0; color: #475569; max-width: 520px;">Welcome Admin. This is the Stscope application space — connected with the same secure auth as all ecosystem portals.</p>
+        </div>
+    </div>
+
+    <!-- MENU SECTION VIEWS (Products / Consulting & Services / Career) -->
+    <div id="products-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #7c3aed; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0;"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 48px; height: 48px;">
+                </button>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
+            <h2 style="margin: 0 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Products</h2>
+            <p style="margin: 0; color: #475569; max-width: 560px;">Explore the Joining Hands ecosystem products — ProConnect, GramConnect, Mobility, Stscope and more, united by Together Forever.</p>
+        </div>
+    </div>
+
+    <div id="consulting-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #ea580c; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0;"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 48px; height: 48px;">
+                </button>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
+            <h2 style="margin: 0 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Consulting &amp; Services</h2>
+            <p style="margin: 0; color: #475569; max-width: 560px;">Guidance, community programs and professional services to help members connect, collaborate and grow.</p>
+        </div>
+    </div>
+
+    <div id="career-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;">
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                    style="color: #059669; font-size: 28px; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div>
+            <div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0;"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home" style="width: 48px; height: 48px;">
+                </button>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 100px 24px 60px; box-sizing: border-box; text-align: center;">
+            <h2 style="margin: 0 0 8px; color: #0f172a; font-family: Calibri, sans-serif;">Career Opportunity</h2>
+            <p style="margin: 0; color: #475569; max-width: 560px;">Join hands with us — explore open roles, volunteering and opportunities to serve the nation and grow together.</p>
         </div>
     </div>
 
@@ -2521,7 +2783,7 @@
             style="width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></iframe>
     </div>
 
-    <script src="script.js?v=49"></script>
+    <script src="script.js?v=50"></script>
 </body>
 
 </html>
