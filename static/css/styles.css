@@ -104,8 +104,6 @@ body {
     background-color: #fafafa !important;
     position: relative;
     overflow-x: hidden;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
     min-height: 100vh;
     min-height: 100dvh;
 }
@@ -1002,8 +1000,7 @@ body {
     -webkit-text-fill-color: initial;
     filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.4));
     /* Wide dark drop-shadow for pop */
-    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-        titleGentleFloat 4s ease-in-out infinite alternate;
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Modern Compromise Pill for Elegant Title */
@@ -1401,7 +1398,9 @@ body {
     margin-bottom: 40px;
     margin-top: 24px;
     width: 100%;
-    max-width: calc(100vw - 260px);
+    max-width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -1676,14 +1675,6 @@ body {
 /* ==========================================
    2. APPLICATIONS ECOSYSTEM HUB (COMPACT HALF-SIZE)
    ========================================== */
-.apps-hub-wrap {
-    width: 100%;
-    max-width: 580px;
-    margin: 4px auto 30px;
-    padding: 0 16px;
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-}
-
 .section-header-compact {
     text-align: center;
     margin-bottom: 18px;
@@ -8846,10 +8837,10 @@ input:checked+.slider:before {
     box-shadow: 0 4px 10px rgba(124, 58, 237, 0.1);
 }
 
-/* MENU = same look as other tile buttons when collapsed, ONE box enlarges when open */
+/* MENU = same look as other tile buttons when collapsed, ONLY expands Y (height) when open */
 #menuFloatingBtn {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8861,8 +8852,7 @@ input:checked+.slider:before {
     padding: 0;
     overflow: visible;
     box-sizing: border-box;
-    transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-        height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
         min-height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
         background 0.3s ease,
         padding 0.38s cubic-bezier(0.16, 1, 0.3, 1),
@@ -8871,9 +8861,9 @@ input:checked+.slider:before {
 }
 
 #menuFloatingBtn.menu-open {
-    width: 232px;
+    width: 120px;
     height: auto;
-    min-height: 124px;
+    min-height: 120px;
     background: var(--glass-bg);
     border: 1.5px solid var(--glass-border);
     border-radius: 22px;
@@ -8882,17 +8872,19 @@ input:checked+.slider:before {
         inset 0 -2px 4px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    padding: 12px;
-    overflow: hidden;
+    padding: 10px;
+    overflow: visible;
 }
 
 #menuFloatingBtn .tile-3d-body {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     flex: 0 0 auto;
 }
 
 #menuFloatingBtn.menu-open .tile-3d-body {
+    width: 100px;
+    height: 100px;
     background: transparent;
     border: none;
     box-shadow: none;
@@ -8941,14 +8933,14 @@ input:checked+.slider:before {
 .menu-dropdown-item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
     width: 100%;
-    padding: 12px 14px;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(124, 58, 237, 0.14);
-    border-radius: 14px;
+    padding: 8px 6px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
     font-family: Calibri, sans-serif;
-    font-size: 0.92rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: #1e293b;
     cursor: pointer;
@@ -8956,7 +8948,7 @@ input:checked+.slider:before {
     box-sizing: border-box;
     opacity: 0;
     transform: translateY(-8px);
-    transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease;
+    transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
 }
 
 .menu-dropdown-panel.active .menu-dropdown-item {
@@ -8970,19 +8962,19 @@ input:checked+.slider:before {
 .menu-dropdown-panel.active .menu-dropdown-item:nth-child(4) { transition-delay: 0.2s; }
 
 .menu-dropdown-item:last-child {
-    border-bottom: 1px solid rgba(124, 58, 237, 0.14);
+    border-bottom: none;
 }
 
 .menu-dropdown-item i {
     color: #7c3aed;
-    font-size: 1rem;
-    width: 20px;
+    font-size: 0.75rem;
+    width: 14px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .menu-dropdown-item:hover {
-    background: #faf5ff;
-    border-color: rgba(124, 58, 237, 0.35);
+    background: rgba(124, 58, 237, 0.08);
     transform: translateX(3px);
 }
 
@@ -8998,18 +8990,31 @@ input:checked+.slider:before {
         padding: 0;
     }
     #menuFloatingBtn.menu-open {
-        width: 210px;
+        width: 55px;
         height: auto;
-        min-height: 79px;
-        padding: 10px;
+        min-height: 55px;
+        padding: 8px;
         border-radius: 18px;
     }
     #menuFloatingBtn .tile-3d-body {
         width: 55px !important;
         height: 55px !important;
     }
+    #menuFloatingBtn.menu-open .tile-3d-body {
+        width: 46px !important;
+        height: 46px !important;
+    }
     .menu-dropdown-panel.active {
         margin-top: 8px;
+    }
+    .menu-dropdown-item {
+        padding: 6px 5px;
+        font-size: 0.62rem;
+        gap: 5px;
+    }
+    .menu-dropdown-item i {
+        font-size: 0.6rem;
+        width: 12px;
     }
 }
 
@@ -9307,10 +9312,10 @@ input:checked+.slider:before {
     }
 
     #menuFloatingBtn.menu-open {
-        width: 210px !important;
+        width: 55px !important;
         height: auto !important;
-        min-height: 79px !important;
-        padding: 10px !important;
+        min-height: 55px !important;
+        padding: 8px !important;
     }
 
     #menuFloatingBtn .tile-3d-body {
@@ -9504,7 +9509,7 @@ input:checked+.slider:before {
     width: 100%;
     max-width: 100%;
     margin: 10px 0 16px 0 !important;
-    padding: 0 calc(24px + 100px + 24px) !important;
+    padding: 0 160px !important;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -9528,7 +9533,7 @@ input:checked+.slider:before {
     pointer-events: auto !important;
     animation: fadeInAbout 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     margin: 0 0 12px 0 !important;
-    padding: 0 calc(24px + 100px + 12px) !important;
+    padding: 0 160px !important;
     max-width: 100% !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -9719,9 +9724,9 @@ input:checked+.slider:before {
 #landing-view.menu-active .vertical-menu-trigger.ecosystem-tile--menu,
 #landing-view.menu-active .vertical-ai-trigger.ecosystem-tile--ai,
 #landing-view.menu-active #settingsFloatingBtn {
-    width: 100px !important;
-    height: 100px !important;
-    border-radius: 22px !important;
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 26px !important;
 }
 
 #landing-view.menu-active .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-body,
@@ -9900,7 +9905,7 @@ input:checked+.slider:before {
     #landing-view.menu-active .landing-about-overlay {
         max-width: 100% !important;
         margin: 0 0 12px 0 !important;
-        padding: 0 calc(8px + 55px + 8px) !important;
+        padding: 0 70px !important;
         border-radius: 0 !important;
         text-align: left !important;
     }
