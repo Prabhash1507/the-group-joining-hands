@@ -6809,3 +6809,5 @@
 {"timestamp": "2026-09-21T21:26:42.252316", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/theme13.mp4", "status": 500}
 {"timestamp": "2026-09-21T21:26:46.719306", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/theme11.mp4", "status": 500}
 {"timestamp": "2026-09-21T21:26:51.498553", "level": "ERROR", "message": "Unhandled GET exception: [Errno 32] Broken pipe", "method": "GET", "path": "/themes/new-2.mp4", "status": 500}
+{"timestamp": "2026-09-22T15:11:42.369169", "level": "ERROR", "message": "Unhandled GET exception: [WinError 10053] An established connection was aborted by the software in your host machine", "method": "GET", "path": "/themes/theme4.mp4", "status": 500}
+{"timestamp": "2026-09-22T15:11:42.965463", "level": "ERROR", "message": "Unhandled GET exception: [WinError 10053] An established connection was aborted by the software in your host machine", "method": "GET", "path": "/themes/theme13.mp4", "status": 500}
