@@ -340,18 +340,15 @@
                     <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('career')">
                         <span>CAREER OPPORTUNITY</span>
                     </button>
-                </div>
-            </div>
-            <!-- Single 3D Natural Intelligent Machine Box Trigger -->
-            <div class="vertical-ai-trigger ecosystem-tile ecosystem-tile--ai" role="button" tabindex="0"
-                onclick="openAiPortal()" onkeydown="if(event.key==='Enter'||event.key===' ')openAiPortal()"
-                aria-label="Natural Intelligent Machine Portal">
-                <div class="tile-3d-body">
-                    <div class="tile-3d-raised">
-                        <div class="tile-3d-circle">
-                            <span class="ai-tile-text">NATURAL<br>INTELLIGENT<br>MACHINE</span>
-                        </div>
-                    </div>
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('api')">
+                        <span>API</span>
+                    </button>
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('ai')">
+                        <span>NATURAL INTELLIGENCE MACHINE</span>
+                    </button>
+                    <button type="button" class="menu-dropdown-item" role="menuitem" onclick="event.stopPropagation();openMenuSection('settings')">
+                        <span>SETTINGS</span>
+                    </button>
                 </div>
             </div>
 
@@ -520,21 +517,8 @@
                 <p>&copy; 2026 The Group of Joining Hands. All rights reserved.</p>
             </div>
         </footer>
-        <!-- Floating API Button and REST Endpoints Popover (Bottom Left) -->
+        <!-- REST Endpoints Popover (Bottom Left) -->
         <div class="landing-api-container">
-            <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="apiFloatingBtn"
-                onclick="openApiPortal(event)" role="button" tabindex="0" aria-label="Explore System REST APIs"
-                title="API Documentation & System Endpoints"
-                style="position: relative; top: auto; left: auto; right: auto; margin: 0; transform: none; animation: none;">
-                <div class="tile-3d-body">
-                    <div class="tile-3d-raised">
-                        <div class="tile-3d-circle">
-                            <span class="menu-tile-text api-tile-text">API</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="api-popover-panel" id="apiPopoverPanel" onclick="event.stopPropagation()">
                 <div class="api-panel-header">
                     <div style="display: flex; align-items: center; gap: 8px;">
@@ -577,21 +561,8 @@
             </div>
         </div>
 
-        <!-- Floating Settings Button and Backdrop Theme Popover (Downside) -->
+        <!-- Backdrop Theme Popover (Bottom Right) -->
         <div class="landing-settings-container">
-            <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="settingsFloatingBtn"
-                onclick="toggleSettingsPanel(event)" role="button" tabindex="0" aria-label="Configure Backdrop Themes"
-                title="Theme Settings"
-                style="position: relative; top: auto; left: auto; right: auto; margin: 0; transform: none; animation: none;">
-                <div class="tile-3d-body">
-                    <div class="tile-3d-raised">
-                        <div class="tile-3d-circle">
-                            <span class="menu-tile-text settings-tile-text">SETTINGS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="settings-popover-panel" id="settingsPopoverPanel" onclick="event.stopPropagation()">
                 <div class="settings-panel-header">
                     <h4>Themes</h4>
