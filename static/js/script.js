@@ -956,6 +956,15 @@ function openMenuSection(name) {
     if (name === "products") showView("products-view");
     else if (name === "consulting") showView("consulting-view");
     else if (name === "career") showView("career-view");
+    else if (name === "api") {
+        setTimeout(() => openApiPortal(), 50);
+    }
+    else if (name === "ai") {
+        openAiPortal();
+    }
+    else if (name === "settings") {
+        setTimeout(() => toggleSettingsPanel(), 50);
+    }
 }
 
 document.addEventListener("click", (e) => {
@@ -6450,7 +6459,8 @@ document.addEventListener("click", (e) => {
     const settingsPanel = document.getElementById("settingsPopoverPanel");
     const settingsBtn = document.getElementById("settingsFloatingBtn");
     if (settingsPanel && settingsPanel.classList.contains("active")) {
-        if (!settingsPanel.contains(e.target) && e.target !== settingsBtn && !settingsBtn.contains(e.target)) {
+        const isMenuSettings = e.target && e.target.closest && e.target.closest('[onclick*="settings"]');
+        if (!settingsPanel.contains(e.target) && !isMenuSettings && (!settingsBtn || (!settingsBtn.contains(e.target) && e.target !== settingsBtn))) {
             closeSettingsPanel();
         }
     }
@@ -6458,7 +6468,8 @@ document.addEventListener("click", (e) => {
     const apiPanel = document.getElementById("apiPopoverPanel");
     const apiBtn = document.getElementById("apiFloatingBtn");
     if (apiPanel && apiPanel.classList.contains("active")) {
-        if (!apiPanel.contains(e.target) && e.target !== apiBtn && !apiBtn.contains(e.target)) {
+        const isMenuApi = e.target && e.target.closest && e.target.closest('[onclick*="api"]');
+        if (!apiPanel.contains(e.target) && !isMenuApi && (!apiBtn || (!apiBtn.contains(e.target) && e.target !== apiBtn))) {
             closeApiPanel();
         }
     }

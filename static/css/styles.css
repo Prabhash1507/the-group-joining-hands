@@ -8428,11 +8428,12 @@ input:checked+.slider:before {
     bottom: 24px;
     left: 24px;
     z-index: 2000;
+    pointer-events: none;
 }
 
 .api-popover-panel {
     position: absolute;
-    bottom: 116px;
+    bottom: 0;
     left: 0;
     width: 320px;
     max-height: 480px;
@@ -8571,6 +8572,7 @@ input:checked+.slider:before {
     bottom: 24px;
     right: 24px;
     z-index: 2000;
+    pointer-events: none;
 }
 
 .settings-floating-btn {
@@ -8600,7 +8602,7 @@ input:checked+.slider:before {
 
 .settings-popover-panel {
     position: absolute;
-    bottom: 116px;
+    bottom: 0;
     right: 0;
     width: 320px;
     background: rgba(255, 255, 255, 0.82);
@@ -8861,7 +8863,7 @@ input:checked+.slider:before {
 }
 
 #menuFloatingBtn.menu-open {
-    width: 120px;
+    width: 140px;
     height: auto;
     min-height: 120px;
     background: var(--glass-bg);
@@ -8908,7 +8910,7 @@ input:checked+.slider:before {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     max-height: 0;
     opacity: 0;
     visibility: hidden;
@@ -8923,7 +8925,7 @@ input:checked+.slider:before {
 }
 
 .menu-dropdown-panel.active {
-    max-height: 420px;
+    max-height: 650px;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -8933,11 +8935,11 @@ input:checked+.slider:before {
 .menu-dropdown-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
     width: 100%;
-    min-height: 38px;
-    padding: 6px 8px;
+    min-height: 34px;
+    padding: 6px 10px;
     background: transparent;
     border: none;
     border-radius: 10px;
@@ -8960,10 +8962,13 @@ input:checked+.slider:before {
     transform: translateY(0);
 }
 
-.menu-dropdown-panel.active .menu-dropdown-item:nth-child(1) { transition-delay: 0.05s; }
-.menu-dropdown-panel.active .menu-dropdown-item:nth-child(2) { transition-delay: 0.1s; }
-.menu-dropdown-panel.active .menu-dropdown-item:nth-child(3) { transition-delay: 0.15s; }
-.menu-dropdown-panel.active .menu-dropdown-item:nth-child(4) { transition-delay: 0.2s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(1) { transition-delay: 0.03s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(2) { transition-delay: 0.06s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(3) { transition-delay: 0.09s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(4) { transition-delay: 0.12s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(5) { transition-delay: 0.15s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(6) { transition-delay: 0.18s; }
+.menu-dropdown-panel.active .menu-dropdown-item:nth-child(7) { transition-delay: 0.21s; }
 
 .menu-dropdown-item:last-child {
     border-bottom: none;
@@ -8972,11 +8977,11 @@ input:checked+.slider:before {
 .menu-dropdown-item:hover {
     background: rgba(124, 58, 237, 0.1);
     color: #7c3aed;
-    transform: scale(1.02);
+    transform: translateX(4px);
 }
 
 .menu-dropdown-panel.active .menu-dropdown-item:hover {
-    transform: scale(1.02);
+    transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
@@ -8987,7 +8992,7 @@ input:checked+.slider:before {
         padding: 0;
     }
     #menuFloatingBtn.menu-open {
-        width: 55px;
+        width: 120px;
         height: auto;
         min-height: 55px;
         padding: 8px;
@@ -9003,13 +9008,14 @@ input:checked+.slider:before {
     }
     .menu-dropdown-panel.active {
         margin-top: 8px;
+        max-height: 550px;
     }
     .menu-dropdown-item {
-        padding: 5px 4px;
+        padding: 5px 6px;
         font-size: 0.52rem;
-        min-height: 28px;
-        text-align: center;
-        justify-content: center;
+        min-height: 26px;
+        text-align: left;
+        justify-content: flex-start;
         line-height: 1.2;
     }
 }
@@ -11040,7 +11046,8 @@ input:checked+.slider:before {
     background: #ffffff;
     border-radius: 24px;
     padding: 48px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04), border: 1px solid rgba(0, 0, 0, 0.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .auth-card h2 {
