@@ -1447,8 +1447,58 @@
         </div>
     </div>
 
-    <!-- PURPLE APP VIEW (RIDE / SWASTIK PORTAL LOGIN SCREEN) -->
+    <!-- PURPLE APP LOGIN SCREEN (gated, same auth API as other portals) -->
     <div id="rapido-login-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
+        <!-- Top Universal Header -->
+        <div class="universal-app-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--d header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><svg class="tile-symbol-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 50 14 L 50 86" /><path d="M 14 50 L 86 50" /><path d="M 50 14 L 84 14" /><path d="M 86 50 L 86 84" /><path d="M 50 86 L 16 86" /><path d="M 14 50 L 14 16" /></g><circle cx="32" cy="32" r="3.5" fill="#ffffff" /><circle cx="68" cy="32" r="3.5" fill="#ffffff" /><circle cx="32" cy="68" r="3.5" fill="#ffffff" /><circle cx="68" cy="68" r="3.5" fill="#ffffff" /></svg></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-handshake-angle"
+                        style="color: #f97316; font-size: 30px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.95); padding: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05);"></i>
+            </div><div style="pointer-events: auto; display: flex; align-items: center;">
+                <button onclick="returnToLanding()"
+                    style="background: none; border: none; cursor: pointer; padding: 0; outline: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                    aria-label="Go back to main screen">
+                    <img src="/static/images/new_home_icon.png" alt="Home"
+                        style="width: 64px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));">
+                </button>
+            </div></div></div>
+
+        <!-- Center: Centered Admin Login Card -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; padding: 80px 24px 40px; box-sizing: border-box;">
+            <div class="pro-login-card"
+                style="width: 100%; max-width: 380px; box-sizing: border-box; z-index: 10; padding: 36px 32px; background: #ffffff; border-radius: 16px; box-shadow: 0 10px 35px rgba(0,0,0,0.07); border: 1px solid rgba(0,0,0,0.04);">
+                <h2 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin: 0 0 18px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved" style="color: #7c3aed; font-size: 16px;"></i> Admin Login
+                </h2>
+                <div id="rapidoAuthErrorAlert" class="auth-error-banner"
+                    style="display:none; margin-bottom: 12px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 8px 12px; border-radius: 6px; border: 1px solid #fecaca;"></div>
+
+                <form id="rapidoLoginForm" action="#" method="POST" onsubmit="handleRapidoLogin(event)"
+                    style="text-align: left;">
+                    <div class="input-group" style="margin-bottom: 14px;">
+                        <label for="rapidoAdminId" style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Admin ID</label>
+                        <input type="text" id="rapidoAdminId" required placeholder="Enter Admin ID"
+                            style="width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box; outline: none; transition: border-color 0.2s;"
+                            onfocus="this.style.borderColor='#7c3aed'" onblur="this.style.borderColor='#e2e8f0'">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <label for="rapidoPass" style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Password</label>
+                        <input type="password" id="rapidoPass" required placeholder="Enter password"
+                            style="width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box; outline: none; transition: border-color 0.2s;"
+                            onfocus="this.style.borderColor='#7c3aed'" onblur="this.style.borderColor='#e2e8f0'">
+                    </div>
+
+                    <button type="submit"
+                        style="width: 100%; background-color: #7c3aed; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color 0.2s, transform 0.1s;"
+                        onmouseover="this.style.backgroundColor='#6d28d9'" onmouseout="this.style.backgroundColor='#7c3aed'">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- PURPLE APP MAIN VIEW (SWASTIK PORTAL MAIN SCREEN AFTER LOGIN) -->
+    <div id="purple-main-view" class="app-view" style="display: none; min-height: 100vh; width: 100%; position: relative; background: #ffffff;">
         <!-- Top Universal Header -->
         <div class="universal-app-header"
             style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; z-index: 1000; pointer-events: none; box-sizing: border-box;"><!-- LEFT: page tile (same UI as landing tile) --><div style="pointer-events: none; display: flex; align-items: center;"><div class="ecosystem-tile ecosystem-tile--d header-tile" aria-hidden="true"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"><svg class="tile-symbol-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 50 14 L 50 86" /><path d="M 14 50 L 86 50" /><path d="M 50 14 L 84 14" /><path d="M 86 50 L 86 84" /><path d="M 50 86 L 16 86" /><path d="M 14 50 L 14 16" /></g><circle cx="32" cy="32" r="3.5" fill="#ffffff" /><circle cx="68" cy="32" r="3.5" fill="#ffffff" /><circle cx="32" cy="68" r="3.5" fill="#ffffff" /><circle cx="68" cy="68" r="3.5" fill="#ffffff" /></svg></div></div></div></div></div><!-- RIGHT: brand + home icons, equal 48px --><div style="pointer-events: auto; display: flex; align-items: center; gap: 12px;"><div style="pointer-events: auto; display: flex; align-items: center;">
@@ -1488,30 +1538,6 @@
                     <circle cx="68" cy="68" r="3.5" fill="#7c3aed" />
                 </svg>
             </div>
-        </div>
-
-        <!-- Bottom Right: Admin Login Corner Card -->
-        <div class="pro-login-card admin-login-corner-card"
-            style="position: fixed !important; bottom: 24px !important; right: 24px !important; top: auto !important; left: auto !important; z-index: 999999 !important;">
-            <h2>
-                <i class="fa-solid fa-shield-halved" style="color: #7c3aed; font-size: 13px;"></i> Admin Login
-            </h2>
-            <div id="rapidoAuthErrorAlert" class="auth-error-banner"
-                style="display:none; margin-bottom: 8px; font-size: 12px; color: #ef4444; background: #fef2f2; padding: 6px 8px; border-radius: 6px; border: 1px solid #fecaca;"></div>
-
-            <form id="rapidoLoginForm" action="#" method="POST" onsubmit="handleRapidoLogin(event)"
-                style="text-align: left;">
-                <div class="input-group">
-                    <label for="rapidoAdminId">Admin ID</label>
-                    <input type="text" id="rapidoAdminId" required placeholder="Enter Admin ID">
-                </div>
-                <div class="input-group">
-                    <label for="rapidoPass">Password</label>
-                    <input type="password" id="rapidoPass" required placeholder="Enter password">
-                </div>
-
-                <button type="submit" style="background-color: #7c3aed; color: white;">Login</button>
-            </form>
         </div>
     </div>
 
