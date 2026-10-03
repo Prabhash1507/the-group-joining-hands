@@ -1,4 +1,4 @@
-﻿name: Deploy to GoDaddy
+name: Deploy to GoDaddy
 
 on:
   push:
@@ -14,17 +14,23 @@ jobs:
       uses: actions/checkout@v4
 
     - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftps
+        port: 21
+        security: loose
+        timeout: 60000
+        log-level: verbose
         local-dir: ./
-        server-dir: ./
+        server-dir: public_html/
         exclude: |
           **/.git*
           **/.git*/**
           **/__pycache__/**
           .env
+
 
 
