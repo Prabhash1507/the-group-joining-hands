@@ -1000,7 +1000,7 @@ function showView(viewId) {
 
     const targetView = document.getElementById(viewId);
     if (targetView) {
-        if (viewId === "insta-view" || viewId === "rapido-login-view") { targetView.style.display = "flex"; } else { targetView.style.display = "block"; }
+        if (viewId === "insta-view" || viewId === "rapido-login-view" || viewId === "purple-main-view") { targetView.style.display = "flex"; } else { targetView.style.display = "block"; }
         targetView.classList.add("active");
         window.scrollTo(0, 0);
     }
@@ -1054,10 +1054,20 @@ function openOApp() {
     openShankarView();
 }
 
-// Gated access flags for API + Natural Intelligent Machine portals
+// Gated access flags for API + Natural Intelligent Machine portals + Purple Swastik portal
 let isApiAuthed = false;
 let isAiAuthed = false;
 let isHAuthed = false;
+let isPurpleAuthed = false;
+
+function openPurpleApp() {
+    openRapidoClone();
+}
+
+function launchPurpleApp() {
+    if (checkAppLock()) return;
+    showView("purple-main-view");
+}
 
 function openHApp() {
     if (checkAppLock()) return;
@@ -1276,8 +1286,10 @@ async function handleAiLogin(event) {
 
 async function handleRapidoLogin(event) {
     event.preventDefault();
-    const admin = document.getElementById("rapidoAdminId").value.trim();
-    const password = document.getElementById("rapidoPass").value;
+    const adminEl = document.getElementById("rapidoAdminId");
+    const passEl = document.getElementById("rapidoPass");
+    const admin = adminEl ? adminEl.value.trim() : "";
+    const password = passEl ? passEl.value : "";
     const errorBox = document.getElementById("rapidoAuthErrorAlert");
     if (errorBox) errorBox.style.display = "none";
 
@@ -1289,8 +1301,9 @@ async function handleRapidoLogin(event) {
     );
 
     if (isStandardAdmin) {
+        isPurpleAuthed = true;
         showToast("Login successful! Welcome Admin.");
-        returnToLanding();
+        launchPurpleApp();
         return;
     }
 
@@ -1308,11 +1321,12 @@ async function handleRapidoLogin(event) {
             }
             currentUser = data.user;
             isProLoggedIn = true;
+            isPurpleAuthed = true;
             if (typeof updateUserProfileUI === "function") {
                 updateUserProfileUI(currentUser);
             }
             showToast(`Welcome back, ${currentUser.fullName}!`);
-            returnToLanding();
+            launchPurpleApp();
             return;
         } else {
             if (errorBox) {
@@ -2575,6 +2589,10 @@ function updateUserProfileUI(user) {
 function logoutPro() {
     isProLoggedIn = false;
     currentUser = null;
+    isPurpleAuthed = false;
+    isHAuthed = false;
+    isApiAuthed = false;
+    isAiAuthed = false;
     localStorage.removeItem("pro_auth_token");
     fetch("/api/auth/logout", { method: "POST" }).catch(() => { });
     // Clear polling intervals to prevent memory leaks
@@ -4389,6 +4407,11 @@ function playSingleBeep(freq, gainVal, duration) {
 // Show view controller trigger
 function openRapidoClone() {
     if (checkAppLock()) return;
+    if (isPurpleAuthed || localStorage.getItem("pro_auth_token")) {
+        isPurpleAuthed = true;
+        launchPurpleApp();
+        return;
+    }
     showView("rapido-login-view");
 }
 
